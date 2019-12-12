@@ -8095,7 +8095,7 @@
 </node>
 </node>
 </node>
-<node TEXT="3.3 &#x423;&#x434;&#x430;&#x43b;&#x435;&#x43d;&#x438;&#x435; &#x432;&#x435;&#x440;&#x448;&#x438;&#x43d;&#x44b; &#x438;&#x437; &#x434;&#x435;&#x440;&#x435;&#x432;&#x430;" ID="ID_218485488" CREATED="1575879599923" MODIFIED="1575879725327">
+<node TEXT="3.3 &#x423;&#x434;&#x430;&#x43b;&#x435;&#x43d;&#x438;&#x435; &#x432;&#x435;&#x440;&#x448;&#x438;&#x43d;&#x44b; &#x438;&#x437; &#x434;&#x435;&#x440;&#x435;&#x432;&#x430;" FOLDED="true" ID="ID_218485488" CREATED="1575879599923" MODIFIED="1575879725327">
 <font BOLD="true"/>
 <node TEXT="&#x410;&#x43b;&#x433;&#x43e;&#x440;&#x438;&#x442;&#x43c; &#x41f;&#x435;&#x440;&#x432;&#x44b;&#x439; &#x448;&#x430;&#x433;, &#x43d;&#x430;&#x439;&#x442;&#x438;" FOLDED="true" ID="ID_1897440665" CREATED="1575879725625" MODIFIED="1575879732097">
 <font BOLD="true"/>
@@ -8168,7 +8168,7 @@
 </node>
 </node>
 </node>
-<node TEXT="4. &#x410;&#x412;&#x41b;-&#x434;&#x435;&#x440;&#x435;&#x432;&#x43e;" ID="ID_1139962628" CREATED="1572156935929" MODIFIED="1576123226694">
+<node TEXT="4. &#x410;&#x412;&#x41b;-&#x434;&#x435;&#x440;&#x435;&#x432;&#x43e;" FOLDED="true" ID="ID_1139962628" CREATED="1572156935929" MODIFIED="1576139175208" COLOR="#0000ff">
 <font BOLD="true"/>
 <node TEXT="4.1 &#x41e;&#x43f;&#x440;&#x435;&#x434;&#x435;&#x43b;&#x435;&#x43d;&#x438;&#x435; &#x410;&#x412;&#x41b;-&#x434;&#x435;&#x440;&#x435;&#x432;&#x430;" FOLDED="true" ID="ID_760165246" CREATED="1572156942059" MODIFIED="1576123230610">
 <font BOLD="true"/>
@@ -8422,11 +8422,188 @@
 </node>
 </node>
 </node>
-<node TEXT="&#x410;&#x43b;&#x433;&#x43e;&#x440;&#x438;&#x442;&#x43c; &#x443;&#x434;&#x430;&#x43b;&#x435;&#x43d;&#x438;&#x44f; &#x432;&#x435;&#x440;&#x448;&#x438;&#x43d;&#x44b; &#x438;&#x437; &#x410;&#x412;&#x41b;-&#x434;&#x435;&#x440;&#x435;&#x432;&#x430;" ID="ID_1695803249" CREATED="1572156966890" MODIFIED="1572156977018">
+<node TEXT="4.4 &#x410;&#x43b;&#x433;&#x43e;&#x440;&#x438;&#x442;&#x43c; &#x443;&#x434;&#x430;&#x43b;&#x435;&#x43d;&#x438;&#x44f; &#x432;&#x435;&#x440;&#x448;&#x438;&#x43d;&#x44b; &#x438;&#x437; &#x410;&#x412;&#x41b;-&#x434;&#x435;&#x440;&#x435;&#x432;&#x430;" FOLDED="true" ID="ID_1695803249" CREATED="1572156966890" MODIFIED="1576135598454">
 <font BOLD="true"/>
+<node TEXT="&#x41e; &#x441;&#x43b;&#x43e;&#x436;&#x43d;&#x43e;&#x441;&#x442;&#x438; &#x443;&#x434;&#x430;&#x43b;&#x435;&#x43d;&#x438;&#x44f; &#x432;&#x435;&#x440;&#x448;&#x438;&#x43d;&#x44b;" FOLDED="true" ID="ID_1292904549" CREATED="1576135622896" MODIFIED="1576135626951">
+<font BOLD="true"/>
+<node TEXT="9566_&#x410;&#x412;&#x41b;-&#x434;&#x435;&#x440;&#x435;&#x432;&#x43e;.png" ID="ID_752851274" CREATED="1576135635065" MODIFIED="1576135635065">
+<hook URI="&#x421;&#x438;&#x410;&#x41e;&#x414;_files/9566_&#x410;&#x412;&#x41b;-&#x434;&#x435;&#x440;&#x435;&#x432;&#x43e;.png" SIZE="0.9933775" NAME="ExternalObject"/>
 </node>
-<node TEXT="&#x422;&#x440;&#x443;&#x434;&#x43e;&#x451;&#x43c;&#x43a;&#x43e;&#x441;&#x442;&#x44c; &#x430;&#x43b;&#x433;&#x43e;&#x440;&#x438;&#x442;&#x43c;&#x43e;&#x432; &#x434;&#x43b;&#x44f; &#x410;&#x412;&#x41b;-&#x434;&#x435;&#x440;&#x435;&#x432;&#x430;" ID="ID_864146056" CREATED="1572156977821" MODIFIED="1572156989891">
+</node>
+<node TEXT="&#x41e; &#x431;&#x430;&#x43b;&#x430;&#x43d;&#x441;&#x438;&#x440;&#x43e;&#x432;&#x43a;&#x435; &#x43f;&#x440;&#x438; &#x443;&#x434;&#x430;&#x43b;&#x435;&#x43d;&#x438;&#x438;" FOLDED="true" ID="ID_154758322" CREATED="1576135665119" MODIFIED="1576135677775">
 <font BOLD="true"/>
+<node TEXT="9565_&#x410;&#x412;&#x41b;-&#x434;&#x435;&#x440;&#x435;&#x432;&#x43e;.png" ID="ID_1979816780" CREATED="1576135676249" MODIFIED="1576135676249">
+<hook URI="&#x421;&#x438;&#x410;&#x41e;&#x414;_files/9565_&#x410;&#x412;&#x41b;-&#x434;&#x435;&#x440;&#x435;&#x432;&#x43e;.png" SIZE="0.9933775" NAME="ExternalObject"/>
+</node>
+</node>
+<node TEXT="&#x41f;&#x435;&#x440;&#x432;&#x44b;&#x439; &#x448;&#x430;&#x433; &#x443;&#x434;&#x430;&#x43b;&#x435;&#x43d;&#x438;&#x44f; (&#x43a;&#x430;&#x43a; &#x421;&#x414;&#x41f;)" FOLDED="true" ID="ID_1791996472" CREATED="1576135728639" MODIFIED="1576135740718">
+<font BOLD="true"/>
+<node TEXT="9564_&#x410;&#x412;&#x41b;-&#x434;&#x435;&#x440;&#x435;&#x432;&#x43e;.png" ID="ID_1514344187" CREATED="1576135739233" MODIFIED="1576135739233">
+<hook URI="&#x421;&#x438;&#x410;&#x41e;&#x414;_files/9564_&#x410;&#x412;&#x41b;-&#x434;&#x435;&#x440;&#x435;&#x432;&#x43e;.png" SIZE="1.0" NAME="ExternalObject"/>
+</node>
+</node>
+<node TEXT="&#x41d;&#x430;&#x437;&#x430;&#x434;, &#x441; &#x432;&#x43e;&#x441;&#x441;&#x442;&#x430;&#x43d;&#x43e;&#x432;&#x43b;&#x435;&#x43d;&#x438;&#x435;&#x43c; &#x431;&#x430;&#x43b;&#x430;&#x43d;&#x441;&#x430;" FOLDED="true" ID="ID_745845334" CREATED="1576136635960" MODIFIED="1576136642848">
+<font BOLD="true"/>
+<node TEXT="9563_&#x410;&#x412;&#x41b;-&#x434;&#x435;&#x440;&#x435;&#x432;&#x43e;.png" ID="ID_1296998772" CREATED="1576136648250" MODIFIED="1576136648250">
+<hook URI="&#x421;&#x438;&#x410;&#x41e;&#x414;_files/9563_&#x410;&#x412;&#x41b;-&#x434;&#x435;&#x440;&#x435;&#x432;&#x43e;.png" SIZE="1.0" NAME="ExternalObject"/>
+</node>
+</node>
+<node TEXT="&#x41e;&#x441;&#x43e;&#x431;&#x435;&#x43d;&#x43d;&#x43e;&#x441;&#x442;&#x44c; &#x443;&#x434;&#x430;&#x43b;&#x435;&#x43d;&#x438;&#x44f; &#x43f;&#x435;&#x440;&#x435;&#x434; &#x434;&#x43e;&#x431;&#x430;&#x432;&#x43b;&#x435;&#x43d;&#x438;&#x435;&#x43c;" FOLDED="true" ID="ID_1363447571" CREATED="1576136658880" MODIFIED="1576136680576">
+<font BOLD="true"/>
+<node TEXT="9562_&#x410;&#x412;&#x41b;-&#x434;&#x435;&#x440;&#x435;&#x432;&#x43e;.png" ID="ID_945051333" CREATED="1576136679467" MODIFIED="1576136679467">
+<hook URI="&#x421;&#x438;&#x410;&#x41e;&#x414;_files/9562_&#x410;&#x412;&#x41b;-&#x434;&#x435;&#x440;&#x435;&#x432;&#x43e;.png" SIZE="1.0" NAME="ExternalObject"/>
+</node>
+</node>
+<node TEXT="&#x41f;&#x435;&#x440;&#x435;&#x43c;&#x435;&#x43d;&#x43d;&#x430;&#x44f; &quot;&#x443;&#x43c;&#x435;&#x43d;&#x44c;&#x448;&#x435;&#x43d;&#x438;&#x435;&quot;" FOLDED="true" ID="ID_824466376" CREATED="1576136707960" MODIFIED="1576136713784">
+<font BOLD="true"/>
+<node TEXT="9561_&#x410;&#x412;&#x41b;-&#x434;&#x435;&#x440;&#x435;&#x432;&#x43e;.png" ID="ID_1055502646" CREATED="1576136718224" MODIFIED="1576136718224">
+<hook URI="&#x421;&#x438;&#x410;&#x41e;&#x414;_files/9561_&#x410;&#x412;&#x41b;-&#x434;&#x435;&#x440;&#x435;&#x432;&#x43e;.png" SIZE="1.0" NAME="ExternalObject"/>
+</node>
+</node>
+<node TEXT="&#x411;&#x430;&#x43b;&#x430;&#x43d;&#x441;&#x438;&#x440;&#x43e;&#x432;&#x43a;&#x430; &#x435;&#x441;&#x43b;&#x438; &quot;&#x423;&#x43c;&#x435;&#x43d;&#x44c;&#x448;&#x435;&#x43d;&#x438;&#x435; &#x418;&#x421;&#x422;&#x418;&#x41d;&#x410;&quot;" FOLDED="true" ID="ID_1386157150" CREATED="1576136752175" MODIFIED="1576136890726">
+<font BOLD="true"/>
+<node TEXT="9560_&#x410;&#x412;&#x41b;-&#x434;&#x435;&#x440;&#x435;&#x432;&#x43e;.png" ID="ID_1019154965" CREATED="1576136899811" MODIFIED="1576136899811">
+<hook URI="&#x421;&#x438;&#x410;&#x41e;&#x414;_files/9560_&#x410;&#x412;&#x41b;-&#x434;&#x435;&#x440;&#x435;&#x432;&#x43e;.png" SIZE="1.0" NAME="ExternalObject"/>
+</node>
+</node>
+<node TEXT="&#x41a;&#x43e;&#x433;&#x434;&#x430; &#x43f;&#x435;&#x440;&#x435;&#x43c;&#x435;&#x43d;&#x43d;&#x430;&#x44f; &#x443;&#x43c;&#x435;&#x43d;&#x44c;&#x448;&#x435;&#x43d;&#x438;&#x435; &#x418;&#x441;&#x442;&#x438;&#x43d;&#x430;?" FOLDED="true" ID="ID_1818382552" CREATED="1576136920630" MODIFIED="1576136929846">
+<font BOLD="true"/>
+<node TEXT="9559_&#x410;&#x412;&#x41b;-&#x434;&#x435;&#x440;&#x435;&#x432;&#x43e;.png" ID="ID_1628585057" CREATED="1576136934604" MODIFIED="1576136934604">
+<hook URI="&#x421;&#x438;&#x410;&#x41e;&#x414;_files/9559_&#x410;&#x412;&#x41b;-&#x434;&#x435;&#x440;&#x435;&#x432;&#x43e;.png" SIZE="1.0" NAME="ExternalObject"/>
+</node>
+</node>
+<node TEXT="&#x421;&#x438;&#x43c;&#x43c;&#x435;&#x442;&#x440;&#x438;&#x447;&#x43d;&#x44b;&#x435; &#x43f;&#x440;&#x43e;&#x446;&#x435;&#x434;&#x443;&#x440;&#x44b; &#x431;&#x430;&#x43b;&#x430;&#x43d;&#x441;&#x438;&#x440;&#x43e;&#x432;&#x43a;&#x438;" FOLDED="true" ID="ID_540376840" CREATED="1576136975254" MODIFIED="1576136995606">
+<font BOLD="true"/>
+<node TEXT="9558_&#x410;&#x412;&#x41b;-&#x434;&#x435;&#x440;&#x435;&#x432;&#x43e;.png" ID="ID_678871046" CREATED="1576136994545" MODIFIED="1576136994545">
+<hook URI="&#x421;&#x438;&#x410;&#x41e;&#x414;_files/9558_&#x410;&#x412;&#x41b;-&#x434;&#x435;&#x440;&#x435;&#x432;&#x43e;.png" SIZE="1.0" NAME="ExternalObject"/>
+</node>
+</node>
+<node TEXT="BL &#x438; BR" FOLDED="true" ID="ID_169840183" CREATED="1576137028477" MODIFIED="1576137038542">
+<font BOLD="true"/>
+<node TEXT="9557_&#x410;&#x412;&#x41b;-&#x434;&#x435;&#x440;&#x435;&#x432;&#x43e;.png" ID="ID_507317957" CREATED="1576137046865" MODIFIED="1576137046865">
+<hook URI="&#x421;&#x438;&#x410;&#x41e;&#x414;_files/9557_&#x410;&#x412;&#x41b;-&#x434;&#x435;&#x440;&#x435;&#x432;&#x43e;.png" SIZE="1.0" NAME="ExternalObject"/>
+</node>
+</node>
+<node TEXT="&#x422;&#x440;&#x438; &#x441;&#x43b;&#x443;&#x447;&#x430;&#x44f; &#x443;&#x434;&#x430;&#x43b;&#x435;&#x43d;&#x438;&#x44f;" FOLDED="true" ID="ID_1006250114" CREATED="1576137074597" MODIFIED="1576137196127">
+<font BOLD="true"/>
+<node TEXT="9556_&#x410;&#x412;&#x41b;-&#x434;&#x435;&#x440;&#x435;&#x432;&#x43e;.png" ID="ID_1949113019" CREATED="1576137098163" MODIFIED="1576137098163">
+<hook URI="&#x421;&#x438;&#x410;&#x41e;&#x414;_files/9556_&#x410;&#x412;&#x41b;-&#x434;&#x435;&#x440;&#x435;&#x432;&#x43e;.png" SIZE="1.0" NAME="ExternalObject"/>
+</node>
+</node>
+<node TEXT="&#x41f;&#x441;&#x435;&#x432;&#x434;&#x43e;&#x43a;&#x43e;&#x434; BL" FOLDED="true" ID="ID_1455451663" CREATED="1576137216420" MODIFIED="1576137222084">
+<font BOLD="true"/>
+<node TEXT="9555_&#x410;&#x412;&#x41b;-&#x434;&#x435;&#x440;&#x435;&#x432;&#x43e;.png" ID="ID_593540251" CREATED="1576137229880" MODIFIED="1576137229880">
+<hook URI="&#x421;&#x438;&#x410;&#x41e;&#x414;_files/9555_&#x410;&#x412;&#x41b;-&#x434;&#x435;&#x440;&#x435;&#x432;&#x43e;.png" SIZE="1.0" NAME="ExternalObject"/>
+</node>
+</node>
+<node TEXT="&#x420;&#x438;&#x441;&#x443;&#x43d;&#x43e;&#x43a; &#x442;&#x440;&#x451;&#x445; &#x441;&#x43b;&#x443;&#x447;&#x430;&#x435;&#x432; &#x443;&#x434;&#x430;&#x43b;&#x435;&#x43d;&#x438;&#x44f; &#x438;&#x437; &#x43b;&#x435;&#x432;&#x43e;&#x433;&#x43e;" FOLDED="true" ID="ID_1193047453" CREATED="1576137246131" MODIFIED="1576137273468">
+<font BOLD="true"/>
+<node TEXT="9554_&#x410;&#x412;&#x41b;-&#x434;&#x435;&#x440;&#x435;&#x432;&#x43e;.png" ID="ID_580562612" CREATED="1576137272014" MODIFIED="1576137272014">
+<hook URI="&#x421;&#x438;&#x410;&#x41e;&#x414;_files/9554_&#x410;&#x412;&#x41b;-&#x434;&#x435;&#x440;&#x435;&#x432;&#x43e;.png" SIZE="0.9983361" NAME="ExternalObject"/>
+</node>
+</node>
+<node TEXT="&#x41f;&#x441;&#x435;&#x432;&#x434;&#x43e;&#x43a;&#x43e;&#x434; BR" FOLDED="true" ID="ID_1957544592" CREATED="1576137420458" MODIFIED="1576137423651">
+<font BOLD="true"/>
+<node TEXT="9553_&#x410;&#x412;&#x41b;-&#x434;&#x435;&#x440;&#x435;&#x432;&#x43e;.png" ID="ID_148694905" CREATED="1576137435300" MODIFIED="1576137435300">
+<hook URI="&#x421;&#x438;&#x410;&#x41e;&#x414;_files/9553_&#x410;&#x412;&#x41b;-&#x434;&#x435;&#x440;&#x435;&#x432;&#x43e;.png" SIZE="1.0" NAME="ExternalObject"/>
+</node>
+</node>
+<node TEXT="&#x420;&#x438;&#x441;&#x443;&#x43d;&#x43e;&#x43a; &#x442;&#x440;&#x451;&#x445; &#x441;&#x43b;&#x443;&#x447;&#x430;&#x435;&#x432; &#x443;&#x434;&#x430;&#x43b;&#x435;&#x43d;&#x438;&#x44f; &#x438;&#x437; &#x43f;&#x440;&#x430;&#x432;&#x43e;&#x433;&#x43e;" FOLDED="true" ID="ID_121653390" CREATED="1576137447194" MODIFIED="1576137458323">
+<font BOLD="true"/>
+<node TEXT="9552_&#x410;&#x412;&#x41b;-&#x434;&#x435;&#x440;&#x435;&#x432;&#x43e;.png" ID="ID_1915698781" CREATED="1576137462091" MODIFIED="1576137462091">
+<hook URI="&#x421;&#x438;&#x410;&#x41e;&#x414;_files/9552_&#x410;&#x412;&#x41b;-&#x434;&#x435;&#x440;&#x435;&#x432;&#x43e;.png" SIZE="1.0" NAME="ExternalObject"/>
+</node>
+</node>
+<node TEXT="&#x41e;&#x441;&#x43e;&#x431;&#x435;&#x43d;&#x43d;&#x43e;&#x441;&#x442;&#x44c; &#x434;&#x43e;&#x431;&#x430;&#x432;&#x43b;&#x435;&#x43d;&#x438;&#x44f;, &#x43d;&#x435;&#x43e;&#x431;&#x445;&#x43e;&#x434;&#x438;&#x43c;&#x43e;&#x441;&#x442;&#x44c; &#x438;&#x437;&#x43c;&#x435;&#x43d;&#x435;&#x43d;&#x438;&#x44f; LL" FOLDED="true" ID="ID_285095658" CREATED="1576137512242" MODIFIED="1576138560350">
+<font BOLD="true"/>
+<node TEXT="9551_&#x410;&#x412;&#x41b;-&#x434;&#x435;&#x440;&#x435;&#x432;&#x43e;.png" ID="ID_1780015361" CREATED="1576138571568" MODIFIED="1576138571568">
+<hook URI="&#x421;&#x438;&#x410;&#x41e;&#x414;_files/9551_&#x410;&#x412;&#x41b;-&#x434;&#x435;&#x440;&#x435;&#x432;&#x43e;.png" SIZE="0.9983361" NAME="ExternalObject"/>
+</node>
+</node>
+<node TEXT="&#x410;&#x43b;&#x433;&#x43e;&#x440;&#x438;&#x442;&#x43c; &#x43d;&#x430; &#x43f;&#x441;&#x435;&#x432;&#x434;&#x43e;&#x43a;&#x43e;&#x434;&#x435; LL1" FOLDED="true" ID="ID_654632010" CREATED="1576138601618" MODIFIED="1576138616641">
+<font BOLD="true"/>
+<node TEXT="9550_&#x410;&#x412;&#x41b;-&#x434;&#x435;&#x440;&#x435;&#x432;&#x43e;.png" ID="ID_1734506863" CREATED="1576138622016" MODIFIED="1576138622016">
+<hook URI="&#x421;&#x438;&#x410;&#x41e;&#x414;_files/9550_&#x410;&#x412;&#x41b;-&#x434;&#x435;&#x440;&#x435;&#x432;&#x43e;.png" SIZE="1.0" NAME="ExternalObject"/>
+</node>
+</node>
+<node TEXT="&#x410;&#x43d;&#x430;&#x43b;&#x43e;&#x433;&#x438;&#x447;&#x43d;&#x430;&#x44f; &#x43e;&#x441;&#x43e;&#x431;&#x435;&#x43d;&#x43d;&#x43e;&#x441;&#x442;&#x44c; &#x441; RR" FOLDED="true" ID="ID_299078826" CREATED="1576138657306" MODIFIED="1576138674362">
+<font BOLD="true"/>
+<node TEXT="9549_&#x410;&#x412;&#x41b;-&#x434;&#x435;&#x440;&#x435;&#x432;&#x43e;.png" ID="ID_1521984615" CREATED="1576138684505" MODIFIED="1576138684505">
+<hook URI="&#x421;&#x438;&#x410;&#x41e;&#x414;_files/9549_&#x410;&#x412;&#x41b;-&#x434;&#x435;&#x440;&#x435;&#x432;&#x43e;.png" SIZE="1.0" NAME="ExternalObject"/>
+</node>
+</node>
+<node TEXT="LR &#x438; RL - &#x43f;&#x43e;&#x432;&#x43e;&#x440;&#x43e;&#x442;&#x44b; &#x43d;&#x435; &#x438;&#x437;&#x43c;&#x435;&#x43d;&#x44f;&#x44e;&#x442;&#x441;&#x44f;" FOLDED="true" ID="ID_1678583742" CREATED="1576138695713" MODIFIED="1576138708177">
+<font BOLD="true"/>
+<node TEXT="9548_&#x410;&#x412;&#x41b;-&#x434;&#x435;&#x440;&#x435;&#x432;&#x43e;.png" ID="ID_39678415" CREATED="1576138715672" MODIFIED="1576138715672">
+<hook URI="&#x421;&#x438;&#x410;&#x41e;&#x414;_files/9548_&#x410;&#x412;&#x41b;-&#x434;&#x435;&#x440;&#x435;&#x432;&#x43e;.png" SIZE="1.0" NAME="ExternalObject"/>
+</node>
+</node>
+<node TEXT="&#x41f;&#x441;&#x435;&#x432;&#x434;&#x43e;&#x43a;&#x43e;&#x434; RR1" FOLDED="true" ID="ID_1732135466" CREATED="1576138731865" MODIFIED="1576138739433">
+<font BOLD="true"/>
+<node TEXT="9547_&#x410;&#x412;&#x41b;-&#x434;&#x435;&#x440;&#x435;&#x432;&#x43e;.png" ID="ID_203379057" CREATED="1576138746030" MODIFIED="1576138746030">
+<hook URI="&#x421;&#x438;&#x410;&#x41e;&#x414;_files/9547_&#x410;&#x412;&#x41b;-&#x434;&#x435;&#x440;&#x435;&#x432;&#x43e;.png" SIZE="1.0" NAME="ExternalObject"/>
+</node>
+</node>
+<node TEXT="&#x410;&#x43b;&#x433;&#x43e;&#x440;&#x438;&#x442;&#x43c; &#x443;&#x434;&#x430;&#x43b;&#x435;&#x43d;&#x438;&#x44f; &#x43d;&#x430; &#x43f;&#x441;&#x435;&#x434;&#x43e;&#x43a;&#x43e;&#x434;&#x435;" FOLDED="true" ID="ID_1611248041" CREATED="1576138771929" MODIFIED="1576138779193">
+<font BOLD="true"/>
+<node TEXT="9546_&#x410;&#x412;&#x41b;-&#x434;&#x435;&#x440;&#x435;&#x432;&#x43e;.png" ID="ID_1970912103" CREATED="1576138785303" MODIFIED="1576138785303">
+<hook URI="&#x421;&#x438;&#x410;&#x41e;&#x414;_files/9546_&#x410;&#x412;&#x41b;-&#x434;&#x435;&#x440;&#x435;&#x432;&#x43e;.png" SIZE="1.0" NAME="ExternalObject"/>
+</node>
+</node>
+<node TEXT="&#x427;&#x442;&#x43e; &#x434;&#x435;&#x43b;&#x430;&#x435;&#x442; &#x43f;&#x440;&#x43e;&#x446;&#x435;&#x434;&#x443;&#x440;&#x430; del" FOLDED="true" ID="ID_1737270019" CREATED="1576138807721" MODIFIED="1576138814217">
+<font BOLD="true"/>
+<node TEXT="9545_&#x410;&#x412;&#x41b;-&#x434;&#x435;&#x440;&#x435;&#x432;&#x43e;.png" ID="ID_899376542" CREATED="1576138819204" MODIFIED="1576138819204">
+<hook URI="&#x421;&#x438;&#x410;&#x41e;&#x414;_files/9545_&#x410;&#x412;&#x41b;-&#x434;&#x435;&#x440;&#x435;&#x432;&#x43e;.png" SIZE="1.0" NAME="ExternalObject"/>
+</node>
+</node>
+<node TEXT="&#x41f;&#x441;&#x435;&#x432;&#x434;&#x43e;&#x43a;&#x43e;&#x434; &#x43f;&#x440;&#x43e;&#x446;&#x435;&#x434;&#x443;&#x440;&#x44b; del" FOLDED="true" ID="ID_1160456213" CREATED="1576138830785" MODIFIED="1576138836704">
+<font BOLD="true"/>
+<node TEXT="9544_&#x410;&#x412;&#x41b;-&#x434;&#x435;&#x440;&#x435;&#x432;&#x43e;.png" ID="ID_110720785" CREATED="1576138841953" MODIFIED="1576138841953">
+<hook URI="&#x421;&#x438;&#x410;&#x41e;&#x414;_files/9544_&#x410;&#x412;&#x41b;-&#x434;&#x435;&#x440;&#x435;&#x432;&#x43e;.png" SIZE="1.0" NAME="ExternalObject"/>
+</node>
+<node TEXT="9543_&#x410;&#x412;&#x41b;-&#x434;&#x435;&#x440;&#x435;&#x432;&#x43e;.png" ID="ID_1320475919" CREATED="1576138854755" MODIFIED="1576138854755">
+<hook URI="&#x421;&#x438;&#x410;&#x41e;&#x414;_files/9543_&#x410;&#x412;&#x41b;-&#x434;&#x435;&#x440;&#x435;&#x432;&#x43e;.png" SIZE="1.0" NAME="ExternalObject"/>
+</node>
+</node>
+<node TEXT="&#x41f;&#x440;&#x438;&#x43c;&#x435;&#x440; &#x443;&#x434;&#x430;&#x43b;&#x435;&#x43d;&#x438;&#x44f; &#x432;&#x435;&#x440;&#x448;&#x438;&#x43d;&#x44b; &#x438;&#x437; &#x410;&#x411;&#x41b;-&#x434;&#x435;&#x440;&#x435;&#x432;&#x430;" FOLDED="true" ID="ID_883338595" CREATED="1576138916424" MODIFIED="1576138928760">
+<font BOLD="true"/>
+<node TEXT="9542_&#x410;&#x412;&#x41b;-&#x434;&#x435;&#x440;&#x435;&#x432;&#x43e;.png" ID="ID_423050608" CREATED="1576138932556" MODIFIED="1576138932556">
+<hook URI="&#x421;&#x438;&#x410;&#x41e;&#x414;_files/9542_&#x410;&#x412;&#x41b;-&#x434;&#x435;&#x440;&#x435;&#x432;&#x43e;.png" SIZE="0.9884679" NAME="ExternalObject"/>
+</node>
+<node TEXT="9541_&#x410;&#x412;&#x41b;-&#x434;&#x435;&#x440;&#x435;&#x432;&#x43e;.png" ID="ID_1441219609" CREATED="1576138964661" MODIFIED="1576138964661">
+<hook URI="&#x421;&#x438;&#x410;&#x41e;&#x414;_files/9541_&#x410;&#x412;&#x41b;-&#x434;&#x435;&#x440;&#x435;&#x432;&#x43e;.png" SIZE="0.9852217" NAME="ExternalObject"/>
+</node>
+</node>
+<node TEXT="&#x422;&#x440;&#x443;&#x434;&#x43e;&#x451;&#x43c;&#x43a;&#x43e;&#x441;&#x442;&#x44c; &#x43f;&#x43e;&#x438;&#x441;&#x43a;&#x430;, &#x432;&#x43a;&#x43b;&#x44e;&#x447;&#x435;&#x43d;&#x438;&#x44f;, &#x443;&#x434;&#x430;&#x43b;&#x435;&#x43d;&#x438;&#x44f;" FOLDED="true" ID="ID_1202964368" CREATED="1576138978744" MODIFIED="1576139003527">
+<font BOLD="true"/>
+<node TEXT="9540_&#x410;&#x412;&#x41b;-&#x434;&#x435;&#x440;&#x435;&#x432;&#x43e;.png" ID="ID_88780107" CREATED="1576138998773" MODIFIED="1576138998773">
+<hook URI="&#x421;&#x438;&#x410;&#x41e;&#x414;_files/9540_&#x410;&#x412;&#x41b;-&#x434;&#x435;&#x440;&#x435;&#x432;&#x43e;.png" SIZE="1.0" NAME="ExternalObject"/>
+</node>
+</node>
+<node TEXT="&#x41e;&#x442;&#x43b;&#x438;&#x447;&#x438;&#x435; &#x432;&#x43a;&#x43b;&#x44e;&#x447;&#x435;&#x43d;&#x438;&#x44f; &#x438; &#x443;&#x434;&#x430;&#x43b;&#x435;&#x43d;&#x438;&#x44f;" FOLDED="true" ID="ID_649652313" CREATED="1576139018495" MODIFIED="1576139032768">
+<font BOLD="true"/>
+<node TEXT="9539_&#x410;&#x412;&#x41b;-&#x434;&#x435;&#x440;&#x435;&#x432;&#x43e;.png" ID="ID_1136533028" CREATED="1576139031742" MODIFIED="1576139031742">
+<hook URI="&#x421;&#x438;&#x410;&#x41e;&#x414;_files/9539_&#x410;&#x412;&#x41b;-&#x434;&#x435;&#x440;&#x435;&#x432;&#x43e;.png" SIZE="1.0" NAME="ExternalObject"/>
+</node>
+</node>
+<node TEXT="&#x41d;&#x430;&#x438;&#x445;&#x443;&#x434;&#x448;&#x438;&#x439; &#x441;&#x43b;&#x443;&#x447;&#x430;&#x439; &#x43f;&#x43e; &#x431;&#x430;&#x43b;&#x430;&#x43d;&#x441;&#x438;&#x440;&#x43e;&#x432;&#x43a;&#x435;" FOLDED="true" ID="ID_18300114" CREATED="1576139047303" MODIFIED="1576139062775">
+<font BOLD="true"/>
+<node TEXT="9538_&#x410;&#x412;&#x41b;-&#x434;&#x435;&#x440;&#x435;&#x432;&#x43e;.png" ID="ID_163063471" CREATED="1576139061557" MODIFIED="1576139061557">
+<hook URI="&#x421;&#x438;&#x410;&#x41e;&#x414;_files/9538_&#x410;&#x412;&#x41b;-&#x434;&#x435;&#x440;&#x435;&#x432;&#x43e;.png" SIZE="1.0" NAME="ExternalObject"/>
+</node>
+</node>
+<node TEXT="&#x42d;&#x43a;&#x441;&#x43f;&#x435;&#x440;&#x438;&#x43c;&#x435;&#x43d;&#x442; &#x43e; &#x432;&#x43a;&#x43b;&#x44e;&#x447;&#x435;&#x43d;&#x438;&#x438; &#x438; &#x438;&#x441;&#x43a;&#x43b;&#x44e;&#x447;&#x435;&#x43d;&#x438;&#x438;" FOLDED="true" ID="ID_1255395924" CREATED="1576139080222" MODIFIED="1576139117915">
+<font BOLD="true"/>
+<node TEXT="9537_&#x410;&#x412;&#x41b;-&#x434;&#x435;&#x440;&#x435;&#x432;&#x43e;.png" ID="ID_1067732305" CREATED="1576139091431" MODIFIED="1576139091431">
+<hook URI="&#x421;&#x438;&#x410;&#x41e;&#x414;_files/9537_&#x410;&#x412;&#x41b;-&#x434;&#x435;&#x440;&#x435;&#x432;&#x43e;.png" SIZE="1.0" NAME="ExternalObject"/>
+</node>
+</node>
+</node>
+<node TEXT="4.5 &#x41a;&#x43e;&#x43d;&#x442;&#x440;&#x43e;&#x43b;&#x44c;&#x43d;&#x44b;&#x435; &#x432;&#x43e;&#x43f;&#x440;&#x43e;&#x441;&#x44b;" FOLDED="true" ID="ID_79092245" CREATED="1576139128902" MODIFIED="1576139135015">
+<font BOLD="true"/>
+<node TEXT="9536_&#x410;&#x412;&#x41b;-&#x434;&#x435;&#x440;&#x435;&#x432;&#x43e;.png" ID="ID_1333873741" CREATED="1576139146172" MODIFIED="1576139146172">
+<hook URI="&#x421;&#x438;&#x410;&#x41e;&#x414;_files/9536_&#x410;&#x412;&#x41b;-&#x434;&#x435;&#x440;&#x435;&#x432;&#x43e;.png" SIZE="1.0" NAME="ExternalObject"/>
+</node>
 </node>
 </node>
 <node TEXT="4. &#x411;-&#x434;&#x435;&#x440;&#x435;&#x432;&#x43e;" FOLDED="true" ID="ID_201028954" CREATED="1572156994841" MODIFIED="1572156997697">
