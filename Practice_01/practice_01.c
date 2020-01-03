@@ -36,15 +36,6 @@ typedef struct Binary_tree_vertex {
     int random_number;
 } Binary_tree_vertex;
 
-/*Place binary tree in memory and return pointer to the root*/
-Binary_tree_vertex* init_binary_tree() {
-    Binary_tree_vertex* root = (Binary_tree_vertex*)malloc(sizeof(Binary_tree_vertex));
-    root->random_number = 1;
-    root->pointer_to_the_left  = NULL;
-    root->pointer_to_the_right = NULL;
-    return root;
-}
-
 Binary_tree_vertex* add_left_vertex(Binary_tree_vertex* to_which_vertex) {
     Binary_tree_vertex* new_vertex = (Binary_tree_vertex*)malloc(sizeof(Binary_tree_vertex));
     new_vertex->random_number = 1;
@@ -61,6 +52,14 @@ Binary_tree_vertex* add_right_vertex(Binary_tree_vertex* to_which_vertex) {
     new_vertex->pointer_to_the_right = NULL;
     to_which_vertex->pointer_to_the_right = new_vertex;
     return new_vertex;
+}
+
+Binary_tree_vertex* init_binary_tree() {
+    Binary_tree_vertex* root = (Binary_tree_vertex*)malloc(sizeof(Binary_tree_vertex));
+    root->random_number = 1;
+    root->pointer_to_the_left  = NULL;
+    root->pointer_to_the_right = NULL;
+    return root;
 }
 
 int free_binary_tree(Binary_tree_vertex* vertex) {
