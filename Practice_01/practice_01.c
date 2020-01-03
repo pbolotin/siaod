@@ -109,6 +109,20 @@ unsigned int height_of_binary_tree(Binary_tree_vertex* vertex) {
     return 1 + MAX(height_of_binary_tree(vertex->pointer_to_the_left), height_of_binary_tree(vertex->pointer_to_the_right));
 }
 
+unsigned int sum_of_paths_of_binary_tree(Binary_tree_vertex* vertex, unsigned int level) {
+    if(vertex == NULL) return 0;
+    return level + sum_of_paths_of_binary_tree(vertex->pointer_to_the_left, level+1) + sum_of_paths_of_binary_tree(vertex->pointer_to_the_right, level+1);
+}
+
+double middle_height_of_binary_tree(Binary_tree_vertex* vertex) {
+    return (double)sum_of_paths_of_binary_tree(vertex, 1)/size_of_binary_tree(vertex);
+}
+
+unsigned int control_sum_of_binary_tree(Binary_tree_vertex* vertex) {
+    if(vertex == NULL) return 0;
+    return vertex->random_number + control_sum_of_binary_tree(vertex->pointer_to_the_left) + control_sum_of_binary_tree(vertex->pointer_to_the_right);
+}
+
 int main() {
     srand(time(NULL));
 
@@ -116,6 +130,9 @@ int main() {
     
     printf("Size of binary tree        : %d\n", size_of_binary_tree(root));
     printf("Height of binary tree      : %d\n", height_of_binary_tree(root));
+    printf("Sum of paths of binary tree: %d\n", sum_of_paths_of_binary_tree(root, 0));
+    printf("Middle height f binary tree: %f\n", middle_height_of_binary_tree(root));
+    printf("Control sum of binary tree : %d\n", control_sum_of_binary_tree(root));
     printf("How many vertices are freed: %d\n", free_binary_tree(root));
     return 0;
 }
