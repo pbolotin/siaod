@@ -28,13 +28,67 @@ p   p
       p
 ***************************************************************************/
 #include <stdio.h>
+#include <stdlib.h>
 
 typedef struct Binary_tree_vertex {
-    Binary_tree_vertex *pointer_to_the_left;
-    Binary_tree_vertex *pointer_to_the_right;
+    struct Binary_tree_vertex *pointer_to_the_left;
+    struct Binary_tree_vertex *pointer_to_the_right;
     int random_number;
 } Binary_tree_vertex;
 
+/*Place binary tree in memory and return pointer to the root*/
+Binary_tree_vertex* init_binary_tree() {
+    Binary_tree_vertex* root = (Binary_tree_vertex*)malloc(sizeof(Binary_tree_vertex));
+    root->random_number = 1;
+    root->pointer_to_the_left  = NULL;
+    root->pointer_to_the_right = NULL;
+    return root;
+}
+
+Binary_tree_vertex* add_left_vertex(Binary_tree_vertex* to_which_vertex) {
+    Binary_tree_vertex* new_vertex = (Binary_tree_vertex*)malloc(sizeof(Binary_tree_vertex));
+    new_vertex->random_number = 1;
+    new_vertex->pointer_to_the_left  = NULL;
+    new_vertex->pointer_to_the_right = NULL;
+    to_which_vertex->pointer_to_the_left = new_vertex;
+    return new_vertex;
+}
+
+Binary_tree_vertex* add_right_vertex(Binary_tree_vertex* to_which_vertex) {
+    Binary_tree_vertex* new_vertex = (Binary_tree_vertex*)malloc(sizeof(Binary_tree_vertex));
+    new_vertex->random_number = 1;
+    new_vertex->pointer_to_the_left  = NULL;
+    new_vertex->pointer_to_the_right = NULL;
+    to_which_vertex->pointer_to_the_right = new_vertex;
+    return new_vertex;
+}
+
+int free_binary_tree(Binary_tree_vertex* vertex) {
+    unsigned int how_many_vertices_are_freed = 0;
+    Binary_tree_vertex* left_pointer = vertex->pointer_to_the_left;
+    Binary_tree_vertex* right_pointer = vertex->pointer_to_the_right;
+    printf("Good bye, vertex with number %d. We'll remember you!\n", vertex->random_number);
+    free(vertex);
+    how_many_vertices_are_freed++;
+    if(left_pointer != NULL) {
+        how_many_vertices_are_freed += free_binary_tree(left_pointer);
+    }
+    if(right_pointer != NULL) {
+        how_many_vertices_are_freed += free_binary_tree(right_pointer);
+    }
+    return how_many_vertices_are_freed;
+}
+
 int main() {
+    Binary_tree_vertex* root = init_binary_tree();
+    
+    Binary_tree_vertex* vertex = add_left_vertex(root);
+    add_left_vertex(vertex);
+    
+    vertex = add_right_vertex(root);
+    vertex = add_left_vertex(vertex);
+    add_right_vertex(vertex);
+    
+    printf("How many vertices are freed: %d\n", free_binary_tree(root));
     return 0;
 }
