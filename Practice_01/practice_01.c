@@ -27,6 +27,7 @@ p   p
      \
       p
 ***************************************************************************/
+#include <time.h>
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -38,7 +39,7 @@ typedef struct Binary_tree_vertex {
 
 Binary_tree_vertex* add_left_vertex(Binary_tree_vertex* to_which_vertex) {
     Binary_tree_vertex* new_vertex = (Binary_tree_vertex*)malloc(sizeof(Binary_tree_vertex));
-    new_vertex->random_number = 1;
+    new_vertex->random_number = 0;
     new_vertex->pointer_to_the_left  = NULL;
     new_vertex->pointer_to_the_right = NULL;
     to_which_vertex->pointer_to_the_left = new_vertex;
@@ -47,7 +48,7 @@ Binary_tree_vertex* add_left_vertex(Binary_tree_vertex* to_which_vertex) {
 
 Binary_tree_vertex* add_right_vertex(Binary_tree_vertex* to_which_vertex) {
     Binary_tree_vertex* new_vertex = (Binary_tree_vertex*)malloc(sizeof(Binary_tree_vertex));
-    new_vertex->random_number = 1;
+    new_vertex->random_number = 0;
     new_vertex->pointer_to_the_left  = NULL;
     new_vertex->pointer_to_the_right = NULL;
     to_which_vertex->pointer_to_the_right = new_vertex;
@@ -56,7 +57,7 @@ Binary_tree_vertex* add_right_vertex(Binary_tree_vertex* to_which_vertex) {
 
 Binary_tree_vertex* init_binary_tree() {
     Binary_tree_vertex* root = (Binary_tree_vertex*)malloc(sizeof(Binary_tree_vertex));
-    root->random_number = 1;
+    root->random_number = 0;
     root->pointer_to_the_left  = NULL;
     root->pointer_to_the_right = NULL;
     return root;
@@ -78,16 +79,29 @@ int free_binary_tree(Binary_tree_vertex* vertex) {
     return how_many_vertices_are_freed;
 }
 
-int main() {
+Binary_tree_vertex* create_binary_tree() {
     Binary_tree_vertex* root = init_binary_tree();
+    root->random_number = rand()%10;
     
     Binary_tree_vertex* vertex = add_left_vertex(root);
-    add_left_vertex(vertex);
+    vertex->random_number = rand()%10;
+    vertex = add_left_vertex(vertex);
+    vertex->random_number = rand()%10;
     
     vertex = add_right_vertex(root);
+    vertex->random_number = rand()%10;
     vertex = add_left_vertex(vertex);
-    add_right_vertex(vertex);
-    
+    vertex->random_number = rand()%10;
+    vertex = add_right_vertex(vertex);
+    vertex->random_number = rand()%10;
+    return root;
+}
+
+int main() {
+    srand(time(NULL));
+
+    Binary_tree_vertex* root = create_binary_tree();
+        
     printf("How many vertices are freed: %d\n", free_binary_tree(root));
     return 0;
 }
