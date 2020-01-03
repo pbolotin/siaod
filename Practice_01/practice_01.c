@@ -18,7 +18,7 @@ Personal number:73180026
 ***************************************************************************
 Last number: 6
 ***************************************************************************
-Tree by number 6:
+Binary tree number 6:
     p
    / \
   p   p
@@ -27,8 +27,13 @@ p   p
      \
       p
 ***************************************************************************/
-
 #include <stdio.h>
+
+typedef struct Binary_tree_vertex {
+    Binary_tree_vertex *pointer_to_the_left;
+    Binary_tree_vertex *pointer_to_the_right;
+    int random_number;
+} Binary_tree_vertex;
 
 int main() {
     return 0;
