@@ -31,6 +31,8 @@ p   p
 #include <stdio.h>
 #include <stdlib.h>
 
+#define MAX(X, Y) (((X) > (Y)) ? (X) : (Y))
+
 typedef struct Binary_tree_vertex {
     struct Binary_tree_vertex *pointer_to_the_left;
     struct Binary_tree_vertex *pointer_to_the_right;
@@ -97,11 +99,23 @@ Binary_tree_vertex* create_binary_tree() {
     return root;
 }
 
+unsigned int size_of_binary_tree(Binary_tree_vertex* vertex) {
+    if(vertex == NULL) return 0;
+    return 1 + size_of_binary_tree(vertex->pointer_to_the_left) + size_of_binary_tree(vertex->pointer_to_the_right);
+}
+
+unsigned int height_of_binary_tree(Binary_tree_vertex* vertex) {
+    if(vertex == NULL) return 0;
+    return 1 + MAX(height_of_binary_tree(vertex->pointer_to_the_left), height_of_binary_tree(vertex->pointer_to_the_right));
+}
+
 int main() {
     srand(time(NULL));
 
     Binary_tree_vertex* root = create_binary_tree();
-        
+    
+    printf("Size of binary tree        : %d\n", size_of_binary_tree(root));
+    printf("Height of binary tree      : %d\n", height_of_binary_tree(root));
     printf("How many vertices are freed: %d\n", free_binary_tree(root));
     return 0;
 }
