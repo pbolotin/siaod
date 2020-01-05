@@ -31,7 +31,7 @@ p   p
 #include <stdio.h>
 #include <stdlib.h>
 
-#define MAX(X, Y) (((X) > (Y)) ? (X) : (Y))
+#define INT_MAX(X, Y) (((X) > (Y)) ? (X) : (Y))
 
 typedef struct Binary_tree_vertex {
     struct Binary_tree_vertex *pointer_to_the_left;
@@ -106,7 +106,7 @@ unsigned int size_of_binary_tree(Binary_tree_vertex* vertex) {
 
 unsigned int height_of_binary_tree(Binary_tree_vertex* vertex) {
     if(vertex == NULL) return 0;
-    return 1 + MAX(height_of_binary_tree(vertex->pointer_to_the_left), height_of_binary_tree(vertex->pointer_to_the_right));
+    return 1 + INT_MAX(height_of_binary_tree(vertex->pointer_to_the_left), height_of_binary_tree(vertex->pointer_to_the_right));
 }
 
 unsigned int sum_of_paths_of_binary_tree(Binary_tree_vertex* vertex, unsigned int level) {
@@ -123,6 +123,13 @@ unsigned int control_sum_of_binary_tree(Binary_tree_vertex* vertex) {
     return vertex->random_number + control_sum_of_binary_tree(vertex->pointer_to_the_left) + control_sum_of_binary_tree(vertex->pointer_to_the_right);
 }
 
+void walk_around_from_the_left_to_the_right(Binary_tree_vertex* vertex) {
+    if(vertex == NULL) return;
+    walk_around_from_the_left_to_the_right(vertex->pointer_to_the_left);
+    printf("%d ", vertex->random_number);
+    walk_around_from_the_left_to_the_right(vertex->pointer_to_the_right);
+}
+
 int main() {
     srand(time(NULL));
 
@@ -133,6 +140,8 @@ int main() {
     printf("Sum of paths of binary tree: %d\n", sum_of_paths_of_binary_tree(root, 0));
     printf("Middle height f binary tree: %f\n", middle_height_of_binary_tree(root));
     printf("Control sum of binary tree : %d\n", control_sum_of_binary_tree(root));
+    walk_around_from_the_left_to_the_right(root);
+    printf("\n");
     printf("How many vertices are freed: %d\n", free_binary_tree(root));
     return 0;
 }
