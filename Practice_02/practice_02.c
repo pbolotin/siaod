@@ -27,3 +27,20 @@ Goal:  To know how to build these trees
     and height of tree.
 ***************************************************************************
 
+/*struct, key for search
+/ for all key are defined < > =
+/ unique keys in tree
+/ Binary tree is tree of search if left subtree has less keys,
+/ right has more keys, than keys of the vertex
+*/
+int is_this_tree_tree_of_search() {
+    return 0;
+}
+
+void find_the_vertex_with_key() {
+    return;
+}
+
+int main() {
+    return 0;
+}
