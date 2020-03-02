@@ -40,7 +40,7 @@ Goal:  To know how to build these trees
 typedef struct Binary_tree_vertex {
     struct Binary_tree_vertex *pointer_to_the_left;
     struct Binary_tree_vertex *pointer_to_the_right;
-    int random_number;
+    int key_value;
 } Binary_tree_vertex;
 
 typedef struct Sequence_of_unique_numbers {
@@ -83,14 +83,80 @@ int free_sequence_of_unique_numbers(Sequence_of_unique_numbers* seq) {
 	return 0;
 }
 
+Binary_tree_vertex* init_binary_tree() {
+    Binary_tree_vertex* root = (Binary_tree_vertex*)malloc(sizeof(Binary_tree_vertex));
+    root->key_value = 0;
+    root->pointer_to_the_left  = NULL;
+    root->pointer_to_the_right = NULL;
+    return root;
+}
+
+//#BUG: strange for creation, maybe as it in the lectures?
+Binary_tree_vertex* add_vertex_into_binary_tree_of_search(Binary_tree_vertex* vertex, int key_value) {
+	if(vertex->key_value > key_value) {
+		//printf("L");
+		if(vertex->pointer_to_the_left != NULL) {
+			add_vertex_into_binary_tree_of_search(vertex->pointer_to_the_left, key_value);
+		} else {
+			Binary_tree_vertex* new_vertex = init_binary_tree();
+			vertex->pointer_to_the_left = new_vertex;
+			new_vertex->key_value = key_value;
+		}
+	} else if(vertex->key_value < key_value) {
+		//printf("R");
+		if(vertex->pointer_to_the_right != NULL) {
+			add_vertex_into_binary_tree_of_search(vertex->pointer_to_the_right, key_value);
+		} else {
+			Binary_tree_vertex* new_vertex = init_binary_tree();
+			vertex->pointer_to_the_right = new_vertex;
+			new_vertex->key_value = key_value;
+		}
+	}
+}
+
+Binary_tree_vertex* create_random_tree_of_search_from_sequence_of_unique_numbers(Sequence_of_unique_numbers* seq) {
+	if(seq == NULL) return NULL;
+	if(seq->how_many <= 0) return NULL;
+	
+    Binary_tree_vertex* root = init_binary_tree();
+    root->key_value = seq->unique_number_array[0];
+	
+	for(int i = 1; i < seq->how_many; i++) {
+		add_vertex_into_binary_tree_of_search(root, seq->unique_number_array[i]);
+	}
+	
+    return root;
+}
+
+//#BUG: strange for deletion, maybe easy?
+int free_binary_tree(Binary_tree_vertex* vertex) {
+    unsigned int how_many_vertices_are_freed = 0;
+    Binary_tree_vertex* left_pointer = vertex->pointer_to_the_left;
+    Binary_tree_vertex* right_pointer = vertex->pointer_to_the_right;
+    //printf("Good bye, vertex with number %d. We'll remember you!\n", vertex->key_value);
+    free(vertex);
+    how_many_vertices_are_freed++;
+    if(left_pointer != NULL) {
+        how_many_vertices_are_freed += free_binary_tree(left_pointer);
+    }
+    if(right_pointer != NULL) {
+        how_many_vertices_are_freed += free_binary_tree(right_pointer);
+    }
+    return how_many_vertices_are_freed;
+}
+
 int main() {
 	srand(time(NULL));
 	printf("Create sequence of unique numbers\n");
 	
-	Sequence_of_unique_numbers* seq = create_sequence_of_unique_numbers(10);
+	Sequence_of_unique_numbers* seq = create_sequence_of_unique_numbers(100);
+	
 	for(int i = 0; i < seq->how_many; i++) {
 		printf("%d ", seq->unique_number_array[i]);
 	}
+	
+	Binary_tree_vertex* random_tree_of_search = create_random_tree_of_search_from_sequence_of_unique_numbers(seq);
+	free_binary_tree(random_tree_of_search);
 
 	free_sequence_of_unique_numbers(seq);
     return 0;
