@@ -58,7 +58,7 @@ void find_the_vertex_with_key() {
     return;
 }
 
-Sequence_of_unique_numbers* create_sequence_of_unique_numbers(int how_many) {
+Sequence_of_unique_numbers* create_sequence_of_unique_numbers(int how_many, char mode) {
 	Sequence_of_unique_numbers* seq = (Sequence_of_unique_numbers*)malloc(sizeof(Sequence_of_unique_numbers));
 	seq->how_many = how_many;
 	seq->unique_number_array = (int*)malloc(sizeof(int) * how_many);
@@ -66,14 +66,16 @@ Sequence_of_unique_numbers* create_sequence_of_unique_numbers(int how_many) {
 	for(int i = 0; i < how_many; i++) {
 		seq->unique_number_array[i] = i;
 	}
-	int buff;
-	int pos;
-	for(int i = 0; i < how_many; i++) {
-		pos = i + rand()%(how_many - i);
-		if(pos != i) {
-			buff = seq->unique_number_array[i];
-			seq->unique_number_array[i] = seq->unique_number_array[pos];
-			seq->unique_number_array[pos] = buff;
+	if(mode == 'r') {
+		int buff;
+		int pos;
+		for(int i = 0; i < how_many; i++) {
+			pos = i + rand()%(how_many - i);
+			if(pos != i) {
+				buff = seq->unique_number_array[i];
+				seq->unique_number_array[i] = seq->unique_number_array[pos];
+				seq->unique_number_array[pos] = buff;
+			}
 		}
 	}
 	return seq;
@@ -178,11 +180,25 @@ void walk_around_from_the_left_to_the_right(Binary_tree_vertex* vertex) {
     walk_around_from_the_left_to_the_right(vertex->pointer_to_the_right);
 }
 
+
+Binary_tree_vertex* create_ideal_balance_tree_of_search_from_sequence_of_unique_numbers(Sequence_of_unique_numbers* seq, int left_index, int right_index) {
+	if(left_index > right_index) {
+		return NULL;
+	}
+	int mid = (int)(left_index + right_index) / 2;
+	//printf("%d, %d, %d, %d, %d\n", left_index, mid - 1, mid, mid + 1, right_index);
+	Binary_tree_vertex* vertex = init_binary_tree();
+	vertex->key_value = seq->unique_number_array[mid];
+	vertex->pointer_to_the_left = create_ideal_balance_tree_of_search_from_sequence_of_unique_numbers(seq, left_index, mid - 1);
+	vertex->pointer_to_the_right = create_ideal_balance_tree_of_search_from_sequence_of_unique_numbers(seq, mid + 1, right_index);
+	return vertex;
+}
+
 int main() {
 	srand(time(NULL));
 	printf("Create sequence of unique numbers\n");
 	
-	Sequence_of_unique_numbers* seq = create_sequence_of_unique_numbers(10);
+	Sequence_of_unique_numbers* seq = create_sequence_of_unique_numbers(400, 'r');
 	
 	for(int i = 0; i < seq->how_many; i++) {
 		printf("%d ", seq->unique_number_array[i]);
@@ -200,5 +216,21 @@ int main() {
     printf("How many vertices are freed: %d\n", free_binary_tree(random_tree_of_search));
 
 	free_sequence_of_unique_numbers(seq);
+	
+	seq = create_sequence_of_unique_numbers(400, 'a');
+	
+	Binary_tree_vertex* ideal_balance_tree_of_search = create_ideal_balance_tree_of_search_from_sequence_of_unique_numbers(seq, 0, seq->how_many - 1);
+	
+	printf("Size of binary tree        : %d\n", size_of_binary_tree(ideal_balance_tree_of_search));
+    printf("Height of binary tree      : %d\n", height_of_binary_tree(ideal_balance_tree_of_search));
+    printf("Sum of paths of binary tree: %d\n", sum_of_paths_of_binary_tree(ideal_balance_tree_of_search, 0));
+    printf("Middle height f binary tree: %f\n", middle_height_of_binary_tree(ideal_balance_tree_of_search));
+    printf("Control sum of binary tree : %d\n", control_sum_of_binary_tree(ideal_balance_tree_of_search));
+    walk_around_from_the_left_to_the_right(ideal_balance_tree_of_search);
+    printf("\n");
+    printf("How many vertices are freed: %d\n", free_binary_tree(ideal_balance_tree_of_search));
+
+	free_sequence_of_unique_numbers(seq);
+	
     return 0;
 }
