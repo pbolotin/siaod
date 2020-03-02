@@ -1,1 +1,1 @@
-J:\\MinGW\\bin\\gcc.exe -o practice_01.exe practice_01.c
+D:\\MinGW\\bin\\gcc.exe -o practice_01.exe practice_01.c
