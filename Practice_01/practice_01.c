@@ -65,6 +65,7 @@ Binary_tree_vertex* init_binary_tree() {
     return root;
 }
 
+//#BUG: strange for deletion, maybe easy?
 int free_binary_tree(Binary_tree_vertex* vertex) {
     unsigned int how_many_vertices_are_freed = 0;
     Binary_tree_vertex* left_pointer = vertex->pointer_to_the_left;
