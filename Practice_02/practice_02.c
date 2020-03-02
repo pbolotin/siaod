@@ -68,9 +68,11 @@ Sequence_of_unique_numbers* create_sequence_of_unique_numbers(int how_many) {
 	int pos;
 	for(int i = 0; i < how_many; i++) {
 		pos = i + rand()%(how_many - i);
-		buff = seq->unique_number_array[i];
-		seq->unique_number_array[i] = seq->unique_number_array[pos];
-		seq->unique_number_array[pos] = buff;
+		if(pos != i) {
+			buff = seq->unique_number_array[i];
+			seq->unique_number_array[i] = seq->unique_number_array[pos];
+			seq->unique_number_array[pos] = buff;
+		}
 	}
 	return seq;
 }
