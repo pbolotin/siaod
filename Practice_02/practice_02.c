@@ -33,7 +33,22 @@ Goal:  To know how to build these trees
 / Binary tree is tree of search if left subtree has less keys,
 / right has more keys, than keys of the vertex
 */
-int is_this_tree_tree_of_search() {
+#include <time.h>
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct Binary_tree_vertex {
+    struct Binary_tree_vertex *pointer_to_the_left;
+    struct Binary_tree_vertex *pointer_to_the_right;
+    int random_number;
+} Binary_tree_vertex;
+
+typedef struct Sequence_of_unique_numbers {
+	int *unique_number_array;
+	int how_many;
+} Sequence_of_unique_numbers;
+
+int is_tree_of_search() {
     return 0;
 }
 
@@ -41,7 +56,40 @@ void find_the_vertex_with_key() {
     return;
 }
 
+Sequence_of_unique_numbers* create_sequence_of_unique_numbers(int how_many) {
+	Sequence_of_unique_numbers* seq = (Sequence_of_unique_numbers*)malloc(sizeof(Sequence_of_unique_numbers));
+	seq->how_many = how_many;
+	seq->unique_number_array = (int*)malloc(sizeof(int) * how_many);
+	
+	for(int i = 0; i < how_many; i++) {
+		seq->unique_number_array[i] = i;
+	}
+	int buff;
+	int pos;
+	for(int i = 0; i < how_many; i++) {
+		pos = i + rand()%(how_many - i);
+		buff = seq->unique_number_array[i];
+		seq->unique_number_array[i] = seq->unique_number_array[pos];
+		seq->unique_number_array[pos] = buff;
+	}
+	return seq;
+}
+
+int free_sequence_of_unique_numbers(Sequence_of_unique_numbers* seq) {
+	free(seq->unique_number_array);
+	free(seq);
+	return 0;
+}
+
 int main() {
+	srand(time(NULL));
+	printf("Create sequence of unique numbers\n");
+	
+	Sequence_of_unique_numbers* seq = create_sequence_of_unique_numbers(10);
+	for(int i = 0; i < seq->how_many; i++) {
+		printf("%d ", seq->unique_number_array[i]);
+	}
+
+	free_sequence_of_unique_numbers(seq);
     return 0;
 }
-/*Just for test commit*/
