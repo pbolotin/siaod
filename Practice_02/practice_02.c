@@ -235,6 +235,53 @@ int how_many_operation_are_needed_to_find_key_in_the_tree(Binary_tree_vertex* ve
 	return operations_counter;
 }
 
+double _calculate_average_height(int n, int how_many_tries, char mode) {	
+	int sum_of_heights = 0;
+	for(int i = 0; i < how_many_tries; i++) {
+		if(mode == 'r') {
+			Sequence_of_unique_numbers* seq = create_sequence_of_unique_numbers(n, mode);
+			Binary_tree_vertex* random_tree_of_search = create_random_tree_of_search_from_sequence_of_unique_numbers(seq);
+			sum_of_heights += height_of_binary_tree(random_tree_of_search);
+			if(!is_it_binary_tree_of_search(random_tree_of_search)) {
+				free_binary_tree(random_tree_of_search);
+				free_sequence_of_unique_numbers(seq);
+				printf("Error, builded random_tree_of_search are wrong!\n");
+				exit(-1);
+			}
+			free_binary_tree(random_tree_of_search);
+			free_sequence_of_unique_numbers(seq);
+		} else {
+			Sequence_of_unique_numbers* seq = create_sequence_of_unique_numbers(n, 'a');
+			Binary_tree_vertex* ideal_balance_tree_of_search = create_ideal_balance_tree_of_search_from_sequence_of_unique_numbers(seq, 0, seq->how_many - 1);
+			sum_of_heights += height_of_binary_tree(ideal_balance_tree_of_search);
+			if(!is_it_binary_tree_of_search(ideal_balance_tree_of_search)) {
+				free_binary_tree(ideal_balance_tree_of_search);
+				free_sequence_of_unique_numbers(seq);
+				printf("Error, builded ideal_balance_tree_of_search are wrong!\n");
+				exit(-1);
+			}
+			free_binary_tree(ideal_balance_tree_of_search);
+			free_sequence_of_unique_numbers(seq);
+		}
+	}
+	return (double)sum_of_heights/(double)how_many_tries;
+}
+
+int create_statistic_table(int how_many_tries) {
+	printf("Average height RTS  n=10 : %f\n", _calculate_average_height(10 , how_many_tries, 'r'));
+	printf("Average height RTS  n=50 : %f\n", _calculate_average_height(50 , how_many_tries, 'r'));
+	printf("Average height RTS  n=100: %f\n", _calculate_average_height(100, how_many_tries, 'r'));
+	printf("Average height RTS  n=200: %f\n", _calculate_average_height(200, how_many_tries, 'r'));
+	printf("Average height RTS  n=400: %f\n", _calculate_average_height(400, how_many_tries, 'r'));
+	
+	printf("Average height IBTS n=10 : %f\n", _calculate_average_height(10 , how_many_tries, 'a'));
+	printf("Average height IBTS n=50 : %f\n", _calculate_average_height(50 , how_many_tries, 'a'));
+	printf("Average height IBTS n=100: %f\n", _calculate_average_height(100, how_many_tries, 'a'));
+	printf("Average height IBTS n=200: %f\n", _calculate_average_height(200, how_many_tries, 'a'));
+	printf("Average height IBTS n=400: %f\n", _calculate_average_height(400, how_many_tries, 'a'));
+	return 0;
+}
+
 int main() {
 	srand(time(NULL));
 	printf("Create sequence of unique numbers\n");
@@ -286,6 +333,8 @@ int main() {
     printf("How many vertices are freed: %d\n", free_binary_tree(ideal_balance_tree_of_search));
 
 	free_sequence_of_unique_numbers(seq);
+	
+	create_statistic_table(1000);
 	
     return 0;
 }
