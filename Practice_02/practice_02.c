@@ -194,8 +194,16 @@ Binary_tree_vertex* create_ideal_balance_tree_of_search_from_sequence_of_unique_
 	return vertex;
 }
 
-int is_it_binary_tree_checking(Binary_tree_vertex* root) {
-	return 0;
+int is_it_binary_tree_of_search(Binary_tree_vertex* vertex) {
+	if(vertex != NULL &&
+		(vertex->pointer_to_the_left != NULL && (
+		  vertex->key_value <= vertex->pointer_to_the_left->key_value ||
+		  !is_it_binary_tree_of_search(vertex->pointer_to_the_left))) ||
+		 (vertex->pointer_to_the_right != NULL && (
+		  vertex->key_value >= vertex->pointer_to_the_right->key_value ||
+		  !is_it_binary_tree_of_search(vertex->pointer_to_the_right)))
+	) return 0;
+	return 1;
 }
 
 int main() {
@@ -204,12 +212,13 @@ int main() {
 	
 	Sequence_of_unique_numbers* seq = create_sequence_of_unique_numbers(400, 'r');
 	
-	for(int i = 0; i < seq->how_many; i++) {
-		printf("%d ", seq->unique_number_array[i]);
-	}
+//	for(int i = 0; i < seq->how_many; i++) {
+//		printf("%d ", seq->unique_number_array[i]);
+//	}
 	
 	Binary_tree_vertex* random_tree_of_search = create_random_tree_of_search_from_sequence_of_unique_numbers(seq);
 	
+	printf("Is it binary tree of search: %d\n", is_it_binary_tree_of_search(random_tree_of_search));
 	printf("Size of binary tree        : %d\n", size_of_binary_tree(random_tree_of_search));
     printf("Height of binary tree      : %d\n", height_of_binary_tree(random_tree_of_search));
     printf("Sum of paths of binary tree: %d\n", sum_of_paths_of_binary_tree(random_tree_of_search, 0));
@@ -225,6 +234,7 @@ int main() {
 	
 	Binary_tree_vertex* ideal_balance_tree_of_search = create_ideal_balance_tree_of_search_from_sequence_of_unique_numbers(seq, 0, seq->how_many - 1);
 	
+	printf("Is it binary tree of search: %d\n", is_it_binary_tree_of_search(ideal_balance_tree_of_search));
 	printf("Size of binary tree        : %d\n", size_of_binary_tree(ideal_balance_tree_of_search));
     printf("Height of binary tree      : %d\n", height_of_binary_tree(ideal_balance_tree_of_search));
     printf("Sum of paths of binary tree: %d\n", sum_of_paths_of_binary_tree(ideal_balance_tree_of_search, 0));
