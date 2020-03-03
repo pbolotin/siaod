@@ -194,6 +194,10 @@ Binary_tree_vertex* create_ideal_balance_tree_of_search_from_sequence_of_unique_
 	return vertex;
 }
 
+int is_it_binary_tree_checking(Binary_tree_vertex* root) {
+	return 0;
+}
+
 int main() {
 	srand(time(NULL));
 	printf("Create sequence of unique numbers\n");
