@@ -206,6 +206,9 @@ int is_it_binary_tree_of_search(Binary_tree_vertex* vertex) {
 	return 1;
 }
 
+Binary_tree_vertex* find_vertex_with_key_in_the_tree(Binary_tree_vertex* vertex, key) {
+}
+
 int how_many_operation_are_needed_to_find_key_in_the_tree(Binary_tree_vertex* vertex) {
 }
 
