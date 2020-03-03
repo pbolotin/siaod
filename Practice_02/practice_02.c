@@ -216,7 +216,23 @@ Binary_tree_vertex* find_vertex_with_key_in_the_tree(Binary_tree_vertex* vertex,
 	return curr;
 }
 
-int how_many_operation_are_needed_to_find_key_in_the_tree(Binary_tree_vertex* vertex) {
+int how_many_operation_are_needed_to_find_key_in_the_tree(Binary_tree_vertex* vertex, int key) {
+	Binary_tree_vertex* curr = vertex;
+	int operations_counter = 0;
+	for(; curr != NULL;) {
+		if(curr->key_value < key) {
+			operations_counter++;
+			printf("%d ", curr->key_value);
+			curr = curr->pointer_to_the_right;
+		}
+		else if(curr->key_value > key) {
+			operations_counter++;
+			printf("%d ", curr->key_value);
+			curr = curr->pointer_to_the_left;
+		}
+		else break;
+	}
+	return operations_counter;
 }
 
 int main() {
@@ -240,7 +256,11 @@ int main() {
     walk_around_from_the_left_to_the_right(random_tree_of_search);
     printf("\n");
 	printf("Address of found vertex    : %p\n", (void*)find_vertex_with_key_in_the_tree(random_tree_of_search, 0));
+	printf("How many operation to find : %d\n", how_many_operation_are_needed_to_find_key_in_the_tree(random_tree_of_search, 0));
+	printf("Address of found vertex    : %p\n", (void*)find_vertex_with_key_in_the_tree(random_tree_of_search, 200));
+	printf("How many operation to find : %d\n", how_many_operation_are_needed_to_find_key_in_the_tree(random_tree_of_search, 200));
 	printf("Address of found vertex    : %p\n", (void*)find_vertex_with_key_in_the_tree(random_tree_of_search, 400));
+	printf("How many operation to find : %d\n", how_many_operation_are_needed_to_find_key_in_the_tree(random_tree_of_search, 400));
     printf("How many vertices are freed: %d\n", free_binary_tree(random_tree_of_search));
 
 	free_sequence_of_unique_numbers(seq);
@@ -258,7 +278,11 @@ int main() {
     walk_around_from_the_left_to_the_right(ideal_balance_tree_of_search);
     printf("\n");
 	printf("Address of found vertex    : %p\n", (void*)find_vertex_with_key_in_the_tree(ideal_balance_tree_of_search, 0));
+	printf("How many operation to find : %d\n", how_many_operation_are_needed_to_find_key_in_the_tree(ideal_balance_tree_of_search, 0));
+	printf("Address of found vertex    : %p\n", (void*)find_vertex_with_key_in_the_tree(ideal_balance_tree_of_search, 200));
+	printf("How many operation to find : %d\n", how_many_operation_are_needed_to_find_key_in_the_tree(ideal_balance_tree_of_search, 200));
 	printf("Address of found vertex    : %p\n", (void*)find_vertex_with_key_in_the_tree(ideal_balance_tree_of_search, 400));
+	printf("How many operation to find : %d\n", how_many_operation_are_needed_to_find_key_in_the_tree(ideal_balance_tree_of_search, 400));
     printf("How many vertices are freed: %d\n", free_binary_tree(ideal_balance_tree_of_search));
 
 	free_sequence_of_unique_numbers(seq);
