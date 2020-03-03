@@ -206,6 +206,9 @@ int is_it_binary_tree_of_search(Binary_tree_vertex* vertex) {
 	return 1;
 }
 
+int how_many_operation_are_needed_to_find_key_in_the_tree(Binary_tree_vertex* vertex) {
+}
+
 int main() {
 	srand(time(NULL));
 	printf("Create sequence of unique numbers\n");
