@@ -54,5 +54,11 @@ int free_sequence_of_unique_numbers(Sequence_of_unique_numbers* seq) {
 }
 
 int main(void) {
+	srand(time(NULL));
+	Sequence_of_unique_numbers *seq = create_sequence_of_unique_numbers(10, 'r');
+	for(int i = 0; i < seq->how_many; i++) {
+		printf("%d ", seq->unique_number_array[i]);
+	}
+	free_sequence_of_unique_numbers(seq);
 	return 0;
 }
