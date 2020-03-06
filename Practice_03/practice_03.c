@@ -19,6 +19,40 @@ typedef struct ABL_tree_vertex {
 	int key;
 } ABL_tree_vertex;
 
+typedef struct Sequence_of_unique_numbers {
+	int *unique_number_array;
+	int how_many;
+} Sequence_of_unique_numbers;
+
+Sequence_of_unique_numbers* create_sequence_of_unique_numbers(int how_many, char mode) {
+	Sequence_of_unique_numbers* seq = (Sequence_of_unique_numbers*)malloc(sizeof(Sequence_of_unique_numbers));
+	seq->how_many = how_many;
+	seq->unique_number_array = (int*)malloc(sizeof(int) * how_many);
+	
+	for(int i = 0; i < how_many; i++) {
+		seq->unique_number_array[i] = i;
+	}
+	if(mode == 'r') {
+		int buff;
+		int pos;
+		for(int i = 0; i < how_many; i++) {
+			pos = i + rand()%(how_many - i);
+			if(pos != i) {
+				buff = seq->unique_number_array[i];
+				seq->unique_number_array[i] = seq->unique_number_array[pos];
+				seq->unique_number_array[pos] = buff;
+			}
+		}
+	}
+	return seq;
+}
+
+int free_sequence_of_unique_numbers(Sequence_of_unique_numbers* seq) {
+	free(seq->unique_number_array);
+	free(seq);
+	return 0;
+}
+
 int main(void) {
 	return 0;
 }
