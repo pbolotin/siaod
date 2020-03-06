@@ -12,6 +12,13 @@
 
 #define INT_MAX(X, Y) (((X) > (Y)) ? (X) : (Y))
 
+typedef struct ABL_tree_vertex {
+	ABL_tree_vertex *right;
+	ABL_tree_vertex *left;
+	char balance;
+	int key;
+} ABL_tree_vertex;
+
 int main(void) {
 	return 0;
 }
