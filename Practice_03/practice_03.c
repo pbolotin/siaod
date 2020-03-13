@@ -62,9 +62,6 @@ ABL_tree_vertex* init_binary_tree() {
     return root;
 }
 
-
-
-
 //#BUG: strange for creation, maybe should have done it as it is in the lectures?
 ABL_tree_vertex* add_vertex_into_ABL_tree_of_search(ABL_tree_vertex* vertex, int key, int* growing) {
 	if(vertex == NULL) {
@@ -136,6 +133,133 @@ ABL_tree_vertex* create_ABL_tree_of_search_from_sequence_of_unique_numbers(Seque
     return root;
 }
 
+ABL_tree_vertex* test_add_vertex_and_balance_tree(ABL_tree_vertex* vertex, int key, int *growing) {
+	if(vertex == NULL) {
+		ABL_tree_vertex* new_vertex = (ABL_tree_vertex*)malloc(sizeof(ABL_tree_vertex));
+		new_vertex->balance = 0;
+		new_vertex->key = key;
+		new_vertex->left = NULL;
+		new_vertex->right = NULL;
+		*growing = 1;
+		return new_vertex;
+	}
+	
+	if(key < vertex->key) {
+		vertex->left = test_add_vertex_and_balance_tree(vertex->left, key, growing);
+		if(*growing != 0) {
+			if(vertex->balance <= 0) {
+				vertex->balance--;
+				if(vertex->balance == -2) {
+					ABL_tree_vertex* temp;
+					if(vertex->left->balance == -1) {
+						printf("Need LL\n");
+						temp = vertex->left;
+						vertex->left = vertex->left->right;
+						temp->right = vertex;
+						vertex = temp;
+						vertex->balance = 0;
+						vertex->right->balance = 0;
+					} else {
+						printf("Need LR\n");
+						temp = vertex->left->right;
+						vertex->left->right = vertex->left->right->left;
+						temp->left = vertex->left;
+						vertex->left = temp->right;
+						temp->right = vertex;
+						vertex = temp;
+						if(vertex->balance == -1) {
+							vertex->left->balance = 0;
+							vertex->right->balance = 1;
+						} else {
+							vertex->left->balance = -1;
+							vertex->right->balance = 0;
+						}
+						vertex->balance = 0;
+					}
+					*growing = 0;
+				}
+			}
+			if(vertex->balance > 0) {
+				vertex->balance--;
+				*growing = 0;
+			}
+			printf("Grow from left, balance:%d\n", vertex->balance);
+		}
+	} else if(key > vertex->key) {
+		vertex->right = test_add_vertex_and_balance_tree(vertex->right, key, growing);
+		if(*growing != 0) {
+			if(vertex->balance >= 0) {
+				vertex->balance++;
+				if(vertex->balance == 2) {
+					ABL_tree_vertex* temp;
+					if(vertex->right->balance == 1) {
+						printf("Need RR\n");
+						temp = vertex->right;
+						vertex->right = vertex->right->left;
+						temp->left = vertex;
+						vertex = temp;
+						vertex->balance = 0;
+						vertex->left->balance = 0;
+					} else {
+						printf("Need RL\n");
+						temp = vertex->right->left;
+						vertex->right->left = vertex->right->left->right;
+						temp->right = vertex->right;
+						vertex->right = temp->left;
+						temp->left = vertex;
+						vertex = temp;
+						if(vertex->balance == 1) {
+							vertex->right->balance = 0;
+							vertex->left->balance = -1;
+						} else {
+							vertex->right->balance = 1;
+							vertex->left->balance = 0;
+						}
+						vertex->balance = 0;
+					}
+					*growing = 0;
+				}
+			}
+			if(vertex->balance < 0) {
+				vertex->balance++;
+				*growing = 0;
+			}
+			printf("Grow from right, balance:%d\n", vertex->balance);
+		}
+	}
+	return vertex;
+}
+
+void test_print_tree(ABL_tree_vertex* vertex, int level, int parent_key, char from) {
+	if(vertex == NULL) return;
+	
+	for(int i = 0; i < level; i++) {
+		printf(" ");
+	}
+	printf("l%d %c b%d p%d k%d\n", level, from, vertex->balance, parent_key, vertex->key);
+	
+	if(vertex->left != NULL) {
+		test_print_tree(vertex->left, level+1, vertex->key, 'L');
+	}
+	if (vertex->right != NULL) {
+		test_print_tree(vertex->right, level+1, vertex->key, 'R');
+	}
+}
+
+ABL_tree_vertex* test_tree_create(Sequence_of_unique_numbers* seq) {
+	printf("test tree create\n");
+	if(seq == NULL) return NULL;
+	if(seq->how_many <= 0) return NULL;
+	
+	ABL_tree_vertex* root = NULL;
+	int growing = 0;
+	for(int i = 0; i < seq->how_many; i++) {
+		root = test_add_vertex_and_balance_tree(root, seq->unique_number_array[i], &growing);
+	}
+	
+	return root;
+}
+
 //#BUG: strange for deletion, maybe easy?
 int free_binary_tree(ABL_tree_vertex* vertex) {
     unsigned int how_many_vertices_are_freed = 0;
@@ -160,10 +284,24 @@ int main(void) {
 		printf("%d ", seq->unique_number_array[i]);
 	}
 	
-	ABL_tree_vertex* ABL_tree = create_ABL_tree_of_search_from_sequence_of_unique_numbers(seq);
-	printf("%p\n", (void*)ABL_tree);
-	free_binary_tree(ABL_tree);
+	//ABL_tree_vertex* ABL_tree = create_ABL_tree_of_search_from_sequence_of_unique_numbers(seq);
+	//printf("%p\n", (void*)ABL_tree);
+	//free_binary_tree(ABL_tree);
 	
 	free_sequence_of_unique_numbers(seq);
+	
+	//test
+	Sequence_of_unique_numbers *test_seq = (Sequence_of_unique_numbers*)malloc(sizeof(Sequence_of_unique_numbers));
+	test_seq->how_many = 6;
+	//int test_array[4] = {11, 9, 2, 12};
+	//int test_array[6] = {10, 11, 7, 9, 6, 8};
+	//int test_array[6] = {10, 11, 6, 5, 7, 8};
+	//int test_array[6] = {10, 11, 12};
+	int test_array[6] = {10, 6, 14, 12, 18, 13};
+	test_seq->unique_number_array = test_array;
+	ABL_tree_vertex* test_tree = test_tree_create(test_seq);
+	test_print_tree(test_tree, 0, -1, 'Z');
+	free_binary_tree(test_tree);
+		
 	return 0;
 }
