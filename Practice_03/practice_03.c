@@ -12,6 +12,9 @@
 
 #define INT_MAX(X, Y) (((X) > (Y)) ? (X) : (Y))
 
+#define DEBUG_INFO(S) printf(S)
+//#define DEBUG_INFO(S)
+
 typedef struct Sequence_of_unique_numbers {
 	int *unique_number_array;
 	int how_many;
@@ -152,7 +155,7 @@ ABL_tree_vertex* test_add_vertex_and_balance_tree(ABL_tree_vertex* vertex, int k
 				if(vertex->balance == -2) {
 					ABL_tree_vertex* temp;
 					if(vertex->left->balance == -1) {
-						printf("Need LL\n");
+						DEBUG_INFO("Need LL\n");
 						temp = vertex->left;
 						vertex->left = vertex->left->right;
 						temp->right = vertex;
@@ -160,7 +163,7 @@ ABL_tree_vertex* test_add_vertex_and_balance_tree(ABL_tree_vertex* vertex, int k
 						vertex->balance = 0;
 						vertex->right->balance = 0;
 					} else {
-						printf("Need LR\n");
+						DEBUG_INFO("Need LR\n");
 						temp = vertex->left->right;
 						vertex->left->right = vertex->left->right->left;
 						temp->left = vertex->left;
@@ -193,7 +196,7 @@ ABL_tree_vertex* test_add_vertex_and_balance_tree(ABL_tree_vertex* vertex, int k
 				if(vertex->balance == 2) {
 					ABL_tree_vertex* temp;
 					if(vertex->right->balance == 1) {
-						printf("Need RR\n");
+						DEBUG_INFO("Need RR\n");
 						temp = vertex->right;
 						vertex->right = vertex->right->left;
 						temp->left = vertex;
@@ -201,7 +204,7 @@ ABL_tree_vertex* test_add_vertex_and_balance_tree(ABL_tree_vertex* vertex, int k
 						vertex->balance = 0;
 						vertex->left->balance = 0;
 					} else {
-						printf("Need RL\n");
+						DEBUG_INFO("Need RL\n");
 						temp = vertex->right->left;
 						vertex->right->left = vertex->right->left->right;
 						temp->right = vertex->right;
