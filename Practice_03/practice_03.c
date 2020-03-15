@@ -12,8 +12,8 @@
 
 #define INT_MAX(X, Y) (((X) > (Y)) ? (X) : (Y))
 
-#define DEBUG_INFO(S) printf(S)
-//#define DEBUG_INFO(S)
+//#define DEBUG_INFO(S) printf(S)
+#define DEBUG_INFO(S)
 
 typedef struct Sequence_of_unique_numbers {
 	int *unique_number_array;
@@ -63,6 +63,23 @@ ABL_tree_vertex* init_binary_tree() {
     root->left  = NULL;
     root->right = NULL;
     return root;
+}
+
+unsigned int height_of_binary_tree(ABL_tree_vertex* vertex) {
+    if(vertex == NULL) return 0;
+    return 1 + INT_MAX(height_of_binary_tree(vertex->left), height_of_binary_tree(vertex->right));
+}
+
+int is_it_binary_tree_of_search(ABL_tree_vertex* vertex) {
+	if(vertex != NULL &&
+		(vertex->left != NULL && (
+		  vertex->key <= vertex->left->key ||
+		  !is_it_binary_tree_of_search(vertex->left))) ||
+		 (vertex->right != NULL && (
+		  vertex->key >= vertex->right->key ||
+		  !is_it_binary_tree_of_search(vertex->right)))
+	) return 0;
+	return 1;
 }
 
 //#BUG: strange for creation, maybe should have done it as it is in the lectures?
@@ -189,7 +206,7 @@ ABL_tree_vertex* test_add_vertex_and_balance_tree(ABL_tree_vertex* vertex, int k
 				vertex->balance--;
 				*growing = 0;
 			}
-			printf("Grow from left, balance:%d\n", vertex->balance);
+			//printf("Grow from left, balance:%d\n", vertex->balance);
 		}
 	} else if(key > vertex->key) {
 		vertex->right = test_add_vertex_and_balance_tree(vertex->right, key, growing);
@@ -233,7 +250,114 @@ ABL_tree_vertex* test_add_vertex_and_balance_tree(ABL_tree_vertex* vertex, int k
 				vertex->balance++;
 				*growing = 0;
 			}
-			printf("Grow from right, balance:%d\n", vertex->balance);
+			//printf("Grow from right, balance:%d\n", vertex->balance);
+		}
+	}
+	return vertex;
+}
+
+ABL_tree_vertex* test_add_vertex_and_balance_tree_calc_balancing(ABL_tree_vertex* vertex, int key, int *growing, long long *balancing_turns_per_node) {
+	if(vertex == NULL) {
+		ABL_tree_vertex* new_vertex = (ABL_tree_vertex*)malloc(sizeof(ABL_tree_vertex));
+		new_vertex->balance = 0;
+		new_vertex->key = key;
+		new_vertex->left = NULL;
+		new_vertex->right = NULL;
+		*growing = 1;
+		return new_vertex;
+	}
+	
+	if(key < vertex->key) {
+		vertex->left = test_add_vertex_and_balance_tree_calc_balancing(vertex->left, key, growing, balancing_turns_per_node);
+		if(*growing != 0) {
+			if(vertex->balance <= 0) {
+				vertex->balance--;
+				if(vertex->balance == -2) {
+					ABL_tree_vertex* temp;
+					if(vertex->left->balance == -1) {
+						DEBUG_INFO("Need LL\n");
+						*balancing_turns_per_node = *balancing_turns_per_node + 1;
+						temp = vertex->left;
+						vertex->left = vertex->left->right;
+						temp->right = vertex;
+						vertex = temp;
+						vertex->balance = 0;
+						vertex->right->balance = 0;
+					} else {
+						DEBUG_INFO("Need LR\n");
+						*balancing_turns_per_node = *balancing_turns_per_node + 1;
+						temp = vertex->left->right;
+						vertex->left->right = vertex->left->right->left;
+						temp->left = vertex->left;
+						vertex->left = temp->right;
+						temp->right = vertex;
+						vertex = temp;
+						if(vertex->balance == 0) {
+							vertex->left->balance = 0;
+							vertex->right->balance = 0;
+						} else if(vertex->balance == -1) {
+							vertex->left->balance = 0;
+							vertex->right->balance = 1;
+						} else if(vertex->balance == 1){
+							vertex->left->balance = -1;
+							vertex->right->balance = 0;
+						}
+						vertex->balance = 0;
+					}
+					*growing = 0;
+				}
+			}
+			if(vertex->balance > 0) {
+				vertex->balance--;
+				*growing = 0;
+			}
+			//printf("Grow from left, balance:%d\n", vertex->balance);
+		}
+	} else if(key > vertex->key) {
+		vertex->right = test_add_vertex_and_balance_tree_calc_balancing(vertex->right, key, growing, balancing_turns_per_node);
+		if(*growing != 0) {
+			if(vertex->balance >= 0) {
+				vertex->balance++;
+				if(vertex->balance == 2) {
+					ABL_tree_vertex* temp;
+					if(vertex->right->balance == 1) {
+						DEBUG_INFO("Need RR\n");
+						*balancing_turns_per_node = *balancing_turns_per_node + 1;
+						temp = vertex->right;
+						vertex->right = vertex->right->left;
+						temp->left = vertex;
+						vertex = temp;
+						vertex->balance = 0;
+						vertex->left->balance = 0;
+					} else {
+						DEBUG_INFO("Need RL\n");
+						*balancing_turns_per_node = *balancing_turns_per_node + 1;
+						temp = vertex->right->left;
+						vertex->right->left = vertex->right->left->right;
+						temp->right = vertex->right;
+						vertex->right = temp->left;
+						temp->left = vertex;
+						vertex = temp;
+						if(vertex->balance == 0) {
+							vertex->left->balance = 0;
+							vertex->right->balance = 0;
+						} else if(vertex->balance == -1) {
+							vertex->left->balance = 0;
+							vertex->right->balance = 1;
+						} else if(vertex->balance == 1){
+							vertex->left->balance = -1;
+							vertex->right->balance = 0;
+						}
+						vertex->balance = 0;
+					}
+					*growing = 0;
+				}
+			}
+			if(vertex->balance < 0) {
+				vertex->balance++;
+				*growing = 0;
+			}
+			//printf("Grow from right, balance:%d\n", vertex->balance);
 		}
 	}
 	return vertex;
@@ -256,7 +380,7 @@ void test_print_tree(ABL_tree_vertex* vertex, int level, int parent_key, char fr
 }
 
 ABL_tree_vertex* test_tree_create(Sequence_of_unique_numbers* seq) {
-	printf("test tree create\n");
+	//printf("test tree create\n");
 	if(seq == NULL) return NULL;
 	if(seq->how_many <= 0) return NULL;
 	
@@ -264,6 +388,23 @@ ABL_tree_vertex* test_tree_create(Sequence_of_unique_numbers* seq) {
 	int growing = 0;
 	for(int i = 0; i < seq->how_many; i++) {
 		root = test_add_vertex_and_balance_tree(root, seq->unique_number_array[i], &growing);
+	}
+	
+	return root;
+}
+
+ABL_tree_vertex* test_tree_create_and_calculate_balancing_turns(Sequence_of_unique_numbers* seq, long long* balancing_turns) {
+	//printf("test tree create\n");
+	if(seq == NULL) return NULL;
+	if(seq->how_many <= 0) return NULL;
+	
+	ABL_tree_vertex* root = NULL;
+	int growing = 0;
+	long long  balancing_turns_per_one_node = 0;
+	for(int i = 0; i < seq->how_many; i++) {
+		root = test_add_vertex_and_balance_tree_calc_balancing(root, seq->unique_number_array[i], &growing, &balancing_turns_per_one_node);
+		*balancing_turns = *balancing_turns + balancing_turns_per_one_node;
+		balancing_turns_per_one_node = 0;
 	}
 	
 	return root;
@@ -286,35 +427,89 @@ int free_binary_tree(ABL_tree_vertex* vertex) {
     return how_many_vertices_are_freed;
 }
 
+double _calculate_average_height(int n, int how_many_tries, char mode) {	
+	int sum_of_heights = 0;
+	for(int i = 0; i < how_many_tries; i++) {
+		Sequence_of_unique_numbers* seq = create_sequence_of_unique_numbers(n, mode);
+		ABL_tree_vertex* ABL_tree = test_tree_create(seq);
+		sum_of_heights += height_of_binary_tree(ABL_tree);
+		if(!is_it_binary_tree_of_search(ABL_tree)) {
+			free_binary_tree(ABL_tree);
+			free_sequence_of_unique_numbers(seq);
+			printf("Error, builded ABL_tree are wrong!\n");
+			exit(-1);
+		}
+		free_binary_tree(ABL_tree);
+		free_sequence_of_unique_numbers(seq);
+	}
+	return (double)sum_of_heights/(double)how_many_tries;
+}
+
+double _calculate_average_balancing_turns(int n, int how_many_tries, char mode) {	
+	long long sum_of_balancing_turns = 0;
+	long long balancing_turns = 0;
+	for(int i = 0; i < how_many_tries; i++) {
+		Sequence_of_unique_numbers* seq = create_sequence_of_unique_numbers(n, mode);
+		ABL_tree_vertex* ABL_tree = test_tree_create_and_calculate_balancing_turns(seq, &balancing_turns);
+		//printf("Balancing turns: %d\n", balancing_turns);
+		sum_of_balancing_turns += balancing_turns;
+		balancing_turns = 0;
+		free_binary_tree(ABL_tree);
+		free_sequence_of_unique_numbers(seq);
+	}
+	return (double)sum_of_balancing_turns/(double)(how_many_tries*n);
+}
+
+int create_statistic_table(int how_many_tries) {
+	printf("Average height of AVL  n=10 : %f\n", _calculate_average_height(10 , how_many_tries, 'r'));
+	printf("Average height of AVL  n=50 : %f\n", _calculate_average_height(50 , how_many_tries, 'r'));
+	printf("Average height of AVL  n=100: %f\n", _calculate_average_height(100, how_many_tries, 'r'));
+	printf("Average height of AVL  n=200: %f\n", _calculate_average_height(200, how_many_tries, 'r'));
+	printf("Average height of AVL  n=400: %f\n", _calculate_average_height(400, how_many_tries, 'r'));
+	return 0;
+}
+
+int find_average_balance_turns(int how_many_tries) {
+	printf("Average turns per node of AVL  n=10 : %f\n", _calculate_average_balancing_turns(10 , how_many_tries, 'r'));
+	printf("Average turns per node of AVL  n=50 : %f\n", _calculate_average_balancing_turns(50 , how_many_tries, 'r'));
+	printf("Average turns per node of AVL  n=100: %f\n", _calculate_average_balancing_turns(100, how_many_tries, 'r'));
+	printf("Average turns per node of AVL  n=200: %f\n", _calculate_average_balancing_turns(200, how_many_tries, 'r'));
+	printf("Average turns per node of AVL  n=400: %f\n", _calculate_average_balancing_turns(400, how_many_tries, 'r'));
+	printf("Average turns per node of AVL  n=10000: %f\n", _calculate_average_balancing_turns(10000, how_many_tries, 'r'));
+	return 0;
+}
+
 int main(void) {
 	srand(time(NULL));
-	Sequence_of_unique_numbers *seq = create_sequence_of_unique_numbers(10, 'r');
-	for(int i = 0; i < seq->how_many; i++) {
-		printf("%d ", seq->unique_number_array[i]);
-	}
-	
+	//create_statistic_table(1000);
+	find_average_balance_turns(1000);
+	//Sequence_of_unique_numbers *seq = create_sequence_of_unique_numbers(10, 'r');
+	//for(int i = 0; i < seq->how_many; i++) {
+	//	printf("%d ", seq->unique_number_array[i]);
+	//}
+	//
 	//ABL_tree_vertex* ABL_tree = create_ABL_tree_of_search_from_sequence_of_unique_numbers(seq);
 	//printf("%p\n", (void*)ABL_tree);
 	//free_binary_tree(ABL_tree);
-	
-	free_sequence_of_unique_numbers(seq);
+	//
+	//free_sequence_of_unique_numbers(seq);
 	
 	//test
-	Sequence_of_unique_numbers *test_seq = (Sequence_of_unique_numbers*)malloc(sizeof(Sequence_of_unique_numbers));
-	test_seq->how_many = 10;
+	//Sequence_of_unique_numbers *test_seq = (Sequence_of_unique_numbers*)malloc(sizeof(Sequence_of_unique_numbers));
+	//test_seq->how_many = 10;
 	//int test_array[4] = {11, 9, 2, 12};
 	//int test_array[6] = {10, 11, 7, 9, 6, 8};
 	//int test_array[6] = {10, 11, 6, 5, 7, 8};
 	//int test_array[6] = {10, 11, 12};
 	//int test_array[6] = {10, 6, 14, 12, 18, 13};
 	//int test_array[15] = {11, 9, 2, 4, 1, 7, 14, 15, 10, 13, 12, 3, 5, 8, 6};
-	int test_array[10] = {8, 2, 3, 6, 9, 0, 4, 1, 7, 5};
-	
-	
-	test_seq->unique_number_array = test_array;
-	ABL_tree_vertex* test_tree = test_tree_create(test_seq);
-	test_print_tree(test_tree, 0, -1, 'Z');
-	free_binary_tree(test_tree);
+	//int test_array[10] = {8, 2, 3, 6, 9, 0, 4, 1, 7, 5};
+	//
+	//
+	//test_seq->unique_number_array = test_array;
+	//ABL_tree_vertex* test_tree = test_tree_create(test_seq);
+	//test_print_tree(test_tree, 0, -1, 'Z');
+	//free_binary_tree(test_tree);
 		
 	return 0;
 }
