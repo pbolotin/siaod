@@ -1,0 +1,5 @@
+Average height of AVL  n=10 : 4.000000
+Average height of AVL  n=50 : 6.952000
+Average height of AVL  n=100: 7.999000
+Average height of AVL  n=200: 9.027000
+Average height of AVL  n=400: 10.223000
