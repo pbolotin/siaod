@@ -170,10 +170,13 @@ ABL_tree_vertex* test_add_vertex_and_balance_tree(ABL_tree_vertex* vertex, int k
 						vertex->left = temp->right;
 						temp->right = vertex;
 						vertex = temp;
-						if(vertex->balance == -1) {
+						if(vertex->balance == 0) {
+							vertex->left->balance = 0;
+							vertex->right->balance = 0;
+						} else if(vertex->balance == -1) {
 							vertex->left->balance = 0;
 							vertex->right->balance = 1;
-						} else {
+						} else if(vertex->balance == 1){
 							vertex->left->balance = -1;
 							vertex->right->balance = 0;
 						}
@@ -211,12 +214,15 @@ ABL_tree_vertex* test_add_vertex_and_balance_tree(ABL_tree_vertex* vertex, int k
 						vertex->right = temp->left;
 						temp->left = vertex;
 						vertex = temp;
-						if(vertex->balance == 1) {
-							vertex->right->balance = 0;
-							vertex->left->balance = -1;
-						} else {
-							vertex->right->balance = 1;
+						if(vertex->balance == 0) {
 							vertex->left->balance = 0;
+							vertex->right->balance = 0;
+						} else if(vertex->balance == -1) {
+							vertex->left->balance = 0;
+							vertex->right->balance = 1;
+						} else if(vertex->balance == 1){
+							vertex->left->balance = -1;
+							vertex->right->balance = 0;
 						}
 						vertex->balance = 0;
 					}
@@ -295,13 +301,16 @@ int main(void) {
 	
 	//test
 	Sequence_of_unique_numbers *test_seq = (Sequence_of_unique_numbers*)malloc(sizeof(Sequence_of_unique_numbers));
-	test_seq->how_many = 15;
+	test_seq->how_many = 10;
 	//int test_array[4] = {11, 9, 2, 12};
 	//int test_array[6] = {10, 11, 7, 9, 6, 8};
 	//int test_array[6] = {10, 11, 6, 5, 7, 8};
 	//int test_array[6] = {10, 11, 12};
 	//int test_array[6] = {10, 6, 14, 12, 18, 13};
-	int test_array[15] = {11, 9, 2, 4, 1, 7, 14, 15, 10, 13, 12, 3, 5, 8, 6};
+	//int test_array[15] = {11, 9, 2, 4, 1, 7, 14, 15, 10, 13, 12, 3, 5, 8, 6};
+	int test_array[10] = {8, 2, 3, 6, 9, 0, 4, 1, 7, 5};
+	
+	
 	test_seq->unique_number_array = test_array;
 	ABL_tree_vertex* test_tree = test_tree_create(test_seq);
 	test_print_tree(test_tree, 0, -1, 'Z');
