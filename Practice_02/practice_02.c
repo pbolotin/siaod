@@ -194,18 +194,107 @@ Binary_tree_vertex* create_ideal_balance_tree_of_search_from_sequence_of_unique_
 	return vertex;
 }
 
+int is_it_binary_tree_of_search(Binary_tree_vertex* vertex) {
+	if(vertex != NULL &&
+		(vertex->pointer_to_the_left != NULL && (
+		  vertex->key_value <= vertex->pointer_to_the_left->key_value ||
+		  !is_it_binary_tree_of_search(vertex->pointer_to_the_left))) ||
+		 (vertex->pointer_to_the_right != NULL && (
+		  vertex->key_value >= vertex->pointer_to_the_right->key_value ||
+		  !is_it_binary_tree_of_search(vertex->pointer_to_the_right)))
+	) return 0;
+	return 1;
+}
+
+Binary_tree_vertex* find_vertex_with_key_in_the_tree(Binary_tree_vertex* vertex, int key) {
+	Binary_tree_vertex* curr = vertex;
+	for(; curr != NULL;) {
+		if(curr->key_value < key) curr = curr->pointer_to_the_right;
+		else if (curr->key_value > key) curr = curr->pointer_to_the_left;
+		else break;
+	}
+	return curr;
+}
+
+int how_many_operation_are_needed_to_find_key_in_the_tree(Binary_tree_vertex* vertex, int key) {
+	Binary_tree_vertex* curr = vertex;
+	int operations_counter = 0;
+	for(; curr != NULL;) {
+		if(curr->key_value < key) {
+			operations_counter++;
+			printf("%d ", curr->key_value);
+			curr = curr->pointer_to_the_right;
+		}
+		else if(curr->key_value > key) {
+			operations_counter++;
+			printf("%d ", curr->key_value);
+			curr = curr->pointer_to_the_left;
+		}
+		else break;
+	}
+	return operations_counter;
+}
+
+double _calculate_average_height(int n, int how_many_tries, char mode) {	
+	int sum_of_heights = 0;
+	for(int i = 0; i < how_many_tries; i++) {
+		if(mode == 'r') {
+			Sequence_of_unique_numbers* seq = create_sequence_of_unique_numbers(n, mode);
+			Binary_tree_vertex* random_tree_of_search = create_random_tree_of_search_from_sequence_of_unique_numbers(seq);
+			sum_of_heights += height_of_binary_tree(random_tree_of_search);
+			if(!is_it_binary_tree_of_search(random_tree_of_search)) {
+				free_binary_tree(random_tree_of_search);
+				free_sequence_of_unique_numbers(seq);
+				printf("Error, builded random_tree_of_search are wrong!\n");
+				exit(-1);
+			}
+			free_binary_tree(random_tree_of_search);
+			free_sequence_of_unique_numbers(seq);
+		} else {
+			Sequence_of_unique_numbers* seq = create_sequence_of_unique_numbers(n, 'a');
+			Binary_tree_vertex* ideal_balance_tree_of_search = create_ideal_balance_tree_of_search_from_sequence_of_unique_numbers(seq, 0, seq->how_many - 1);
+			sum_of_heights += height_of_binary_tree(ideal_balance_tree_of_search);
+			if(!is_it_binary_tree_of_search(ideal_balance_tree_of_search)) {
+				free_binary_tree(ideal_balance_tree_of_search);
+				free_sequence_of_unique_numbers(seq);
+				printf("Error, builded ideal_balance_tree_of_search are wrong!\n");
+				exit(-1);
+			}
+			free_binary_tree(ideal_balance_tree_of_search);
+			free_sequence_of_unique_numbers(seq);
+		}
+	}
+	return (double)sum_of_heights/(double)how_many_tries;
+}
+
+int create_statistic_table(int how_many_tries) {
+	printf("Average height RTS  n=10 : %f\n", _calculate_average_height(10 , how_many_tries, 'r'));
+	printf("Average height RTS  n=50 : %f\n", _calculate_average_height(50 , how_many_tries, 'r'));
+	printf("Average height RTS  n=100: %f\n", _calculate_average_height(100, how_many_tries, 'r'));
+	printf("Average height RTS  n=200: %f\n", _calculate_average_height(200, how_many_tries, 'r'));
+	printf("Average height RTS  n=400: %f\n", _calculate_average_height(400, how_many_tries, 'r'));
+	
+	printf("Average height IBTS n=10 : %f\n", _calculate_average_height(10 , how_many_tries, 'a'));
+	printf("Average height IBTS n=50 : %f\n", _calculate_average_height(50 , how_many_tries, 'a'));
+	printf("Average height IBTS n=100: %f\n", _calculate_average_height(100, how_many_tries, 'a'));
+	printf("Average height IBTS n=200: %f\n", _calculate_average_height(200, how_many_tries, 'a'));
+	printf("Average height IBTS n=400: %f\n", _calculate_average_height(400, how_many_tries, 'a'));
+	return 0;
+}
+
 int main() {
 	srand(time(NULL));
 	printf("Create sequence of unique numbers\n");
 	
 	Sequence_of_unique_numbers* seq = create_sequence_of_unique_numbers(400, 'r');
 	
-	for(int i = 0; i < seq->how_many; i++) {
-		printf("%d ", seq->unique_number_array[i]);
-	}
+//	for(int i = 0; i < seq->how_many; i++) {
+//		printf("%d ", seq->unique_number_array[i]);
+//	}
 	
 	Binary_tree_vertex* random_tree_of_search = create_random_tree_of_search_from_sequence_of_unique_numbers(seq);
 	
+	printf("Is it binary tree of search: %d\n", is_it_binary_tree_of_search(random_tree_of_search));
 	printf("Size of binary tree        : %d\n", size_of_binary_tree(random_tree_of_search));
     printf("Height of binary tree      : %d\n", height_of_binary_tree(random_tree_of_search));
     printf("Sum of paths of binary tree: %d\n", sum_of_paths_of_binary_tree(random_tree_of_search, 0));
@@ -213,6 +302,12 @@ int main() {
     printf("Control sum of binary tree : %d\n", control_sum_of_binary_tree(random_tree_of_search));
     walk_around_from_the_left_to_the_right(random_tree_of_search);
     printf("\n");
+	printf("Address of found vertex    : %p\n", (void*)find_vertex_with_key_in_the_tree(random_tree_of_search, 0));
+	printf("How many operation to find : %d\n", how_many_operation_are_needed_to_find_key_in_the_tree(random_tree_of_search, 0));
+	printf("Address of found vertex    : %p\n", (void*)find_vertex_with_key_in_the_tree(random_tree_of_search, 200));
+	printf("How many operation to find : %d\n", how_many_operation_are_needed_to_find_key_in_the_tree(random_tree_of_search, 200));
+	printf("Address of found vertex    : %p\n", (void*)find_vertex_with_key_in_the_tree(random_tree_of_search, 400));
+	printf("How many operation to find : %d\n", how_many_operation_are_needed_to_find_key_in_the_tree(random_tree_of_search, 400));
     printf("How many vertices are freed: %d\n", free_binary_tree(random_tree_of_search));
 
 	free_sequence_of_unique_numbers(seq);
@@ -221,6 +316,7 @@ int main() {
 	
 	Binary_tree_vertex* ideal_balance_tree_of_search = create_ideal_balance_tree_of_search_from_sequence_of_unique_numbers(seq, 0, seq->how_many - 1);
 	
+	printf("Is it binary tree of search: %d\n", is_it_binary_tree_of_search(ideal_balance_tree_of_search));
 	printf("Size of binary tree        : %d\n", size_of_binary_tree(ideal_balance_tree_of_search));
     printf("Height of binary tree      : %d\n", height_of_binary_tree(ideal_balance_tree_of_search));
     printf("Sum of paths of binary tree: %d\n", sum_of_paths_of_binary_tree(ideal_balance_tree_of_search, 0));
@@ -228,9 +324,17 @@ int main() {
     printf("Control sum of binary tree : %d\n", control_sum_of_binary_tree(ideal_balance_tree_of_search));
     walk_around_from_the_left_to_the_right(ideal_balance_tree_of_search);
     printf("\n");
+	printf("Address of found vertex    : %p\n", (void*)find_vertex_with_key_in_the_tree(ideal_balance_tree_of_search, 0));
+	printf("How many operation to find : %d\n", how_many_operation_are_needed_to_find_key_in_the_tree(ideal_balance_tree_of_search, 0));
+	printf("Address of found vertex    : %p\n", (void*)find_vertex_with_key_in_the_tree(ideal_balance_tree_of_search, 200));
+	printf("How many operation to find : %d\n", how_many_operation_are_needed_to_find_key_in_the_tree(ideal_balance_tree_of_search, 200));
+	printf("Address of found vertex    : %p\n", (void*)find_vertex_with_key_in_the_tree(ideal_balance_tree_of_search, 400));
+	printf("How many operation to find : %d\n", how_many_operation_are_needed_to_find_key_in_the_tree(ideal_balance_tree_of_search, 400));
     printf("How many vertices are freed: %d\n", free_binary_tree(ideal_balance_tree_of_search));
 
 	free_sequence_of_unique_numbers(seq);
+	
+	create_statistic_table(1000);
 	
     return 0;
 }
